@@ -1,0 +1,21 @@
+- title "Location"
+
+%p
+  %strong Name:
+  =h @location.name
+
+%p
+  %strong Users:
+  - if @location.users.any?
+    %ul
+      - @location.users.each do |user|
+        %li= link_to user.name, user
+  - else
+    no users here
+
+%p
+  = link_to "Edit", edit_location_path(@location)
+  |
+  = link_to "Destroy", @location, :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", locations_path
