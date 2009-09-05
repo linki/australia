@@ -1,4 +1,8 @@
 ActionController::Routing::Routes.draw do |map|
+  map.resources :albums
+
+  map.resources :albums
+
   map.resources :tweets
 
   map.resources :events
