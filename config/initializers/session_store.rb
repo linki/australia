@@ -5,11 +5,13 @@
 # Make sure the secret is at least 30 characters and all random, 
 # no regular words or you'll be exposed to dictionary attacks.
 ActionController::Base.session = {
-  :key         => '_blog_session',
-  :secret      => '4df68b13ddfa9d1be7615c7dd56231dc768eb90ad8b3458d257f3c14597840aee5d671ce4ba929c1459c0149343606883a18e1b4b95c8953fa3918e931d71ebf'
+  :key         => '_paperclip_session',
+  :secret      => '580d05cb3fb639067a3d1d13ccd1aae8accc0b5db54bb8dc0bdc243425e1e054433094c97af4350422b31b321ee49d0f534fe1824db2da24c34429c9c4cc801f'
 }
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information
 # (create the session table with "rake db:sessions:create")
 # ActionController::Base.session_store = :active_record_store
+
+ActionController::Dispatcher.middleware.insert_before(ActionController::Base.session_store, FlashSessionCookieMiddleware, ActionController::Base.session_options[:key])

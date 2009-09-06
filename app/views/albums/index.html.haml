@@ -10,8 +10,6 @@
     %tr
       %td= h album.name
       %td= h album.description
-      %td= h album.location.name if album.location
-      %td= h album.user.name if album.user
       %td= link_to 'Show', album
       %td= link_to 'Edit', edit_album_path(album)
       %td= link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete

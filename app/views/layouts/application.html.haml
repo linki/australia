@@ -5,7 +5,8 @@
     %title
       = h(yield(:title) || "Untitled")
     %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
-    = stylesheet_link_tag 'formtastic', 'formtastic_changes', 'application'
+    = javascript_include_tag 'jquery.min', 'application'
+    = stylesheet_link_tag 'formtastic', 'formtastic_changes', 'uploadify', 'application'
     = yield(:head)
   
   %body

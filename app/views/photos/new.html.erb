@@ -1,0 +1,43 @@
+<% javascript 'swfobject', 'jquery.uploadify.min' %>
+<% content_for :head do %>
+  <script type="text/javascript">
+  $(document).ready(function() {
+    $('#photo_image').uploadify({
+      'uploader' : '/flash/uploadify.swf',
+      'script' : '<%= photos_path %>',
+      'fileDataName' : $('#photo_uploader input:file')[0].name, // Extract correct name of upload field from form field
+      'cancelImg' : '/images/cancel.png',
+      'buttonText' : 'Add Photos',
+      'fileDesc' : 'Photos (<%= [:jpg, :jpeg, :gif, :png].collect { |ext| "*.#{ext}" }.join(';') %>)',
+      'fileExt' : '<%= [:jpg, :jpeg, :gif, :png].collect { |ext| "*.#{ext}" }.join(';') %>',
+      'sizeLimit' : <%= 20.megabytes %>,
+      'multi' : true,
+      'auto' : true,
+      'onComplete' : function(event, queueID, fileObj, response, data) { var data = eval('(' + response + ')');$.getScript(data.photo)},
+      'scriptData' : {
+          'format': 'json',
+          '<%= ActionController::Base.session_options[:key] %>' : encodeURIComponent('<%= u cookies[ActionController::Base.session_options[:key]] %>'),
+          'authenticity_token' : encodeURIComponent('<%= u form_authenticity_token if protect_against_forgery? %>')
+      }
+    });
+  });
+  </script>
+<% end %>
+
+<h1>Listing photos</h1>
+ 
+<div id="photos">
+  <%= render :partial => Photo.all %>
+</div>
+ 
+<br />
+ 
+<h1>New photo</h1>
+ 
+<% form_for(Photo.new, :html => { :multipart => true}) do |f| %>
+  <%= f.error_messages %>
+  <div id="photo_uploader">
+    <%= f.file_field :image %>
+  </div>
+  <p><a href="javascript:jQuery('#photo_image').uploadifyClearQueue()">Cancel All Uploads</a></p>
+<% end %>
