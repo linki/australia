@@ -23,8 +23,8 @@
 %p= image_tag @photo.image.url(:thumb)
 
 %p
-  = link_to "Edit", edit_album_photo_path(@album, @photo)
+  = link_to "Edit", edit_resource_path
   |
-  = link_to "Destroy", album_photo_path(@album, @photo), :confirm => 'Are you sure?', :method => :delete
+  = link_to "Destroy", resource_path, :confirm => 'Are you sure?', :method => :delete
   |
-  = link_to "View All", album_photos_path(@album)
+  = link_to "View All", collection_path

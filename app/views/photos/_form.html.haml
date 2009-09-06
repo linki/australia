@@ -1,4 +1,4 @@
-- semantic_form_for [@album, @photo], :html => { :multipart => true } do |f|
+- semantic_form_for @photo, :url => @photo.new_record? ? collection_path : resource_path, :html => { :multipart => true } do |f|
   - f.inputs do
     = f.input :name
     = f.input :description

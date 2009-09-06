@@ -3,6 +3,6 @@
 = render :partial => 'form'
 
 %p
-  = link_to "Show", album_photo_path(@album, @photo)
+  = link_to "Show", resource_path
   |
-  = link_to "View All", album_photos_path(@album)
+  = link_to "View All", collection_path
