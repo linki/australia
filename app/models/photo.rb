@@ -4,4 +4,6 @@ class Photo < ActiveRecord::Base
 #                    :storage => :s3,
 #                    :s3_credentials => "#{RAILS_ROOT}/config/amazon_s3.yml",
 #                    :path => ":attachment/:id/:style.:extension"
+
+  belongs_to :album
 end

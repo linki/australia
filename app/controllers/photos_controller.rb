@@ -1,43 +1,37 @@
 class PhotosController < InheritedResources::Base
-  actions :all, :except => [:create, :update]
+  belongs_to :album
   
   respond_to :html, :xml, :json, :js
 
   def create
-    @photo = Photo.new(params[:photo])
+    @album = Album.find(params[:album_id])
+    @photo = @album.photos.build(params[:photo])
     @photo.image_content_type = MIME::Types.type_for(@photo.image_file_name).to_s
-    respond_to do |format|
-      if @photo.save
-        flash[:notice] = 'Photo was successfully created.'
-        format.html { redirect_to(@photo) }
-        format.xml  { render :xml => @photo, :status => :created, :location => @photo }
-        format.json { render :json => { :result => 'success', :photo => photo_path(@photo) } }        
-        format.js           
-      else
-        format.html { render :action => "new" }
-        format.xml  { render :xml => @photo.errors, :status => :unprocessable_entity }
-        format.json { render :json => { :result => 'error', :error => @asset.errors.full_messages.to_sentence } }        
-        format.js
-      end
+    create! do |success, failure|
+      success.html { redirect_to resource_path }
+      success.xml  { render :xml => @photo, :status => :created, :location => @photo }
+      success.json { render :json => { :result => 'success', :photo => resource_path } }        
+      success.js
+      failure.html { render :action => "new" }
+      failure.xml  { render :xml => @photo.errors, :status => :unprocessable_entity }
+      failure.json { render :json => { :result => 'error', :error => @asset.errors.full_messages.to_sentence } }        
+      failure.js
     end
   end
 
   def update
-    @photo = Photo.find(params[:id])
+    @album = Album.find(params[:album_id])
+    @photo = @album.photos.find(params[:id])
     @photo.image_content_type = MIME::Types.type_for(@photo.image_file_name).to_s
-    respond_to do |format|
-      if @photo.update_attributes(params[:photo])
-        flash[:notice] = 'Photo was successfully updated.'
-        format.html { redirect_to(@photo) }
-        format.xml  { head :ok }
-        format.json { render :json => { :result => 'success', :photo => photo_path(@photo) } }        
-        format.js                 
-      else
-        format.html { render :action => "edit" }
-        format.xml  { render :xml => @photo.errors, :status => :unprocessable_entity }
-        format.json { render :json => { :result => 'error', :error => @asset.errors.full_messages.to_sentence } }
-        format.js                
-      end
+    update! do |success, failure|
+      success.html { redirect_to resource_path }
+      success.xml  { head :ok }
+      success.json { render :json => { :result => 'success', :photo => resource_path } }        
+      success.js
+      failure.html { render :action => "edit" }
+      failure.xml  { render :xml => @photo.errors, :status => :unprocessable_entity }
+      failure.json { render :json => { :result => 'error', :error => @asset.errors.full_messages.to_sentence } }
+      failure.js
     end
   end
 end

@@ -1,0 +1,5 @@
+%p= image_tag photo.image.url(:medium)
+%p
+  = link_to "edit", edit_resource_path(photo)
+  |
+  = link_to "remove", resource_path(photo), :confirm => 'Are you sure?', :method => :delete
