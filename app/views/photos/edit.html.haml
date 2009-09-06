@@ -1,0 +1,8 @@
+- title "Edit Photo"
+
+= render :partial => 'form'
+
+%p
+  = link_to "Show", album_photo_path(@album, @photo)
+  |
+  = link_to "View All", album_photos_path(@album)

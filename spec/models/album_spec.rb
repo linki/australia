@@ -11,5 +11,9 @@ describe Album do
   
   it "should assign location name" do
     Factory.build(:album, :location_name => 'location name').location.name.should == 'location name'
-  end    
+  end
+  
+  it "should assign user name" do
+    Factory.build(:album, :user_name => 'user name').user.name.should == 'user name'
+  end
 end

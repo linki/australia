@@ -1,0 +1,30 @@
+- title "Photo"
+
+%p
+  %strong Name:
+  =h @photo.name
+%p
+  %strong Description:
+  =h @photo.description
+%p
+  %strong Album:
+  = link_to h(@photo.album.name), @photo.album if @photo.album
+%p
+  %strong Image File Name:
+  =h @photo.image_file_name
+%p
+  %strong Image Content Type:
+  =h @photo.image_content_type
+%p
+  %strong Image File Size:
+  =h @photo.image_file_size
+
+%p= image_tag @photo.image.url(:medium)
+%p= image_tag @photo.image.url(:thumb)
+
+%p
+  = link_to "Edit", edit_album_photo_path(@album, @photo)
+  |
+  = link_to "Destroy", album_photo_path(@album, @photo), :confirm => 'Are you sure?', :method => :delete
+  |
+  = link_to "View All", album_photos_path(@album)

@@ -4,6 +4,7 @@ class CreateAlbums < ActiveRecord::Migration
       t.string :name
       t.text :description
       t.references :location
+      t.references :user
       t.timestamps
     end
   end

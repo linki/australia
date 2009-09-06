@@ -9,8 +9,13 @@
 %p
   %strong Location:
   = link_to h(@album.location.name), @album.location if @album.location
+%p
+  %strong User:
+  = link_to h(@album.user.name), @album.user if @album.user
 
 %p
+  = link_to "Add Photo to Album", new_album_photo_path(@album)
+  |
   = link_to "Edit", edit_album_path(@album)
   |
   = link_to "Destroy", @album, :confirm => 'Are you sure?', :method => :delete
