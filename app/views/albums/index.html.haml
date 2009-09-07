@@ -12,7 +12,7 @@
     %tr
       - for album in albums_row
         %td
-          %p= link_to image_tag(album.photos.first.image.url(:medium)), album
+          %p= link_to image_tag(album.photos.first.image.url(:medium)), album if album.photos.first
           %p= album.name
           %p 27 Sep 2009
           
