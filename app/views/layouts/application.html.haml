@@ -5,8 +5,12 @@
     %title
       = h(yield(:title) || "Untitled")
     %meta{"http-equiv"=>"Content-Type", :content=>"text/html; charset=utf-8"}/
-    = javascript_include_tag 'jquery.min', 'application'
-    = stylesheet_link_tag 'formtastic', 'formtastic_changes', 'uploadify', 'application'
+    - stylesheet_link_tag 'blueprint/screen'
+    - stylesheet_link_tag 'blueprint/print', :media => 'print'
+    /[if IE]
+      - stylesheet_link_tag 'blueprint/ie.css'
+    = stylesheet_link_tag 'reset', 'formtastic', 'formtastic_changes', 'uploadify', 'welcome', 'application'
+    = javascript_include_tag 'jquery.min', 'application'    
     = yield(:head)
   
   %body

@@ -1,17 +1,19 @@
-- title "Albums"
+%h1 Albums
+%h2 because pictures tell more
 
-%table
-  %tr
-    %th Name
-    %th Description
-    %th Location
-    %th User    
-  - for album in @albums
+/ 
+  - form_tag albums_path, :method => 'get' do
+    %p search an album
+    = text_field_tag :search, params[:search], :style => "width: 20em"
+    = submit_tag "Search"
+    
+%table    
+  - @albums.in_groups_of(3, false) do |albums_row|
     %tr
-      %td= h album.name
-      %td= h album.description
-      %td= link_to 'Show', album
-      %td= link_to 'Edit', edit_album_path(album)
-      %td= link_to 'Destroy', album, :confirm => 'Are you sure?', :method => :delete
-
-%p= link_to "New Album", new_album_path
+      - for album in albums_row
+        %td
+          %p= link_to image_tag(album.photos.first.image.url(:medium)), album
+          %p= album.name
+          %p 27 Sep 2009
+          
+%p= link_to "Create a new album", new_resource_path

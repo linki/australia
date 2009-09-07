@@ -1,5 +1,38 @@
-- title "New Photo"
+- javascript 'swfobject', 'jquery.uploadify.min'
 
-= render :partial => 'form'
+%h1= @album.name
+%h2= @album.description
+    
+#photos
 
-%p= link_to "Back to List", collection_path
+- form_for @photo, :url => collection_path, :html => { :multipart => true } do |f|
+  #photo_uploader
+    = f.file_field :image
+  %p <a href="javascript:jQuery('#photo_image').uploadifyClearQueue()">Cancel All Uploads</a>
+
+%p= link_to "Back to album", parent_path
+  
+
+
+- content_for :head do
+  %script{:type => "text/javascript"}    
+    $(document).ready(function() {
+    $('#photo_image').uploadify({
+    'uploader' : '/flash/uploadify.swf',
+    = "'script' : '#{collection_path}',"
+    'fileDataName' : $('#photo_uploader input:file')[0].name, // Extract correct name of upload field from form field
+    'cancelImg' : '/images/cancel.png',
+    'buttonText' : 'Add Photos',
+    = "'fileDesc' : 'Photos ( #{[:jpg, :jpeg, :gif, :png].collect { |ext| "*.#{ext}" }.join(';')})',"
+    = "'fileExt' : '#{[:jpg, :jpeg, :gif, :png].collect { |ext| "*.#{ext}" }.join(';')}',"
+    = "'sizeLimit' : #{20.megabytes},"
+    'multi' : true,
+    'auto' : true,
+    'onComplete' : function(event, queueID, fileObj, response, data) { var data = eval('(' + response + ')');$.getScript(data.photo)},
+    'scriptData' : {
+    'format': 'json',
+    = "'#{ActionController::Base.session_options[:key]}' : encodeURIComponent('#{u cookies[ActionController::Base.session_options[:key]]}'),"
+    = "'authenticity_token' : encodeURIComponent('#{u form_authenticity_token if protect_against_forgery?}')"
+    }
+    });
+    });

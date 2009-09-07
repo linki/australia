@@ -1,17 +1,20 @@
-- title "Album"
+%h1= @album.name
+%h2= @album.description
 
-%p
-  %strong Name:
-  =h @album.name
-%p
-  %strong Description:
-  =h @album.description
-
-%p
-  = link_to "Add Photo to Album", new_album_photo_path(@album)
-  |
-  = link_to "Edit", edit_album_path(@album)
-  |
-  = link_to "Destroy", @album, :confirm => 'Are you sure?', :method => :delete
-  |
-  = link_to "View All", albums_path
+/ 
+  - form_tag albums_path, :method => 'get' do
+    %p search an album
+    = text_field_tag :search, params[:search], :style => "width: 20em"
+    = submit_tag "Search"
+    
+%table    
+  - @album.photos.in_groups_of(3, false) do |photos_row|
+    %tr
+      - for photo in photos_row
+        %td
+          %p= link_to image_tag(photo.image.url(:medium)), resource_path
+          %p= photo.description
+          
+%p= link_to "Add photos to album", new_album_photo_path(@album)
+%p= link_to "Customize this album", edit_resource_path
+%p= link_to "Back to list of albums", collection_path

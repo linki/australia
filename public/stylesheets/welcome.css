@@ -1,0 +1,50 @@
+root { 
+    display: block;
+}
+
+body {
+    background-color: #18110c;
+    font-family: "skia";
+    color: #ffffcc;
+    text-align: center;
+    font-size: 18pt;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: #FFFFCC;
+}
+
+h1 {
+    font-size: 40pt;
+/*    word-spacing: 150pc;*/    
+    margin-top: 3em;
+}
+
+h2 {
+    color: #aa8055;
+    font-size: 14pt;
+}
+
+.watermark {
+    color: #bbb;
+}
+
+
+form {
+    margin-top: 2em;
+}
+
+input {
+    font-size: 18pt;
+    text-align: center;
+}
+
+
+
+table {
+    margin-top: 2em;
+}
+
+table td {
+  padding: 2em 2em 0;
+}

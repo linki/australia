@@ -1,5 +1,15 @@
-- title "New Album"
+%h1 Create Album
+%h2 can't get enough?
 
-= render :partial => 'form'
-
-%p= link_to "Back to List", albums_path
+%table
+  - form_for @album do |f|
+    %tr
+      %td= f.label :name
+      %td= f.text_field :name
+    %tr  
+      %td= f.label :description
+      %td= f.text_area :description
+    %tr
+      %td{:colspan => 2}= f.submit "Save"
+          
+%p= link_to "Back to list of albums", collection_path
