@@ -1,27 +1,8 @@
-- title "Photo"
+%h1= @photo.album.name if @photo.album
+%h2= @photo.description
 
-%p
-  %strong Name:
-  =h @photo.name
-%p
-  %strong Description:
-  =h @photo.description
-%p
-  %strong Image File Name:
-  =h @photo.image_file_name
-%p
-  %strong Image Content Type:
-  =h @photo.image_content_type
-%p
-  %strong Image File Size:
-  =h @photo.image_file_size
+.image
+  %p= link_to image_tag(@photo.image.url(:large)), @photo.image.url(:original)
 
-%p= image_tag @photo.image.url(:medium)
-%p= image_tag @photo.image.url(:thumb)
-
-%p
-  = link_to "Edit", edit_resource_path
-  |
-  = link_to "Destroy", resource_path, :confirm => 'Are you sure?', :method => :delete
-  |
-  = link_to "View All", collection_path
+%p= link_to "Customize this photo", edit_resource_path
+%p= link_to "Back to album", parent_path

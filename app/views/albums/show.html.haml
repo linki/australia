@@ -12,7 +12,7 @@
     %tr
       - for photo in photos_row
         %td
-          %p= link_to image_tag(photo.image.url(:medium)), resource_path
+          %p= link_to image_tag(photo.image.url(:medium)), album_photo_path(@album, photo)
           %p= photo.description
           
 %p= link_to "Add photos to album", new_album_photo_path(@album)
