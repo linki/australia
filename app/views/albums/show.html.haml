@@ -1,3 +1,6 @@
+- javascript 'jquery.galleria.min', 'galleria'
+- stylesheet 'galleria'
+
 %h1= @album.name
 %h2= @album.description
 
@@ -7,14 +10,21 @@
     = text_field_tag :search, params[:search], :style => "width: 20em"
     = submit_tag "Search"
     
-%table    
-  - @album.photos.in_groups_of(3, false) do |photos_row|
-    %tr
-      - for photo in photos_row
-        %td
-          %p= link_to image_tag(photo.image.url(:medium)), album_photo_path(@album, photo)
-          %p= photo.description
-          
+<div id="main_image"></div>
+
+%ul.galleria
+  - for photo in @album.photos
+    %li= "<img class='noscale' src='#{photo.image.url(:medium)}' title='#{photo.description}' alt='#{photo.name}'>"
+    
+/
+  %table    
+    - @album.photos.in_groups_of(3, false) do |photos_row|
+      %tr
+        - for photo in photos_row
+          %td
+            %p= link_to image_tag(photo.image.url(:medium)), album_photo_path(@album, photo)
+            %p= photo.description
+
 %p= link_to "Add photos to album", new_album_photo_path(@album)
 %p= link_to "Customize this album", edit_resource_path
 %p= link_to "Back to list of albums", collection_path

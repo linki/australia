@@ -9,9 +9,11 @@
     - stylesheet_link_tag 'blueprint/print', :media => 'print'
     /[if IE]
       - stylesheet_link_tag 'blueprint/ie.css'
-    = stylesheet_link_tag 'reset', 'formtastic', 'formtastic_changes', 'uploadify', 'welcome', 'application'
-    = javascript_include_tag 'jquery.min', 'application'    
+    = stylesheet_link_tag 'reset', 'welcome', 'uploadify'
+    = javascript_include_tag 'jquery.min'
     = yield(:head)
+    = stylesheet_link_tag 'application'
+    = javascript_include_tag 'application'
   
   %body
     #container
