@@ -9,7 +9,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20090905143607) do
+ActiveRecord::Schema.define(:version => 20090908125114) do
 
   create_table "albums", :force => true do |t|
     t.string   "name"
@@ -17,6 +17,15 @@ ActiveRecord::Schema.define(:version => 20090905143607) do
     t.datetime "starts_at"
     t.datetime "ends_at"
     t.integer  "location_id"
+    t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "comments", :force => true do |t|
+    t.text     "text"
+    t.integer  "commentable_id"
+    t.string   "commentable_type"
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

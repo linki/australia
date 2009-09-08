@@ -13,7 +13,23 @@
 %p.nav
   <a href="#" onclick="$.galleria.prev(); return false;">&laquo; previous</a> | <a href="#" onclick="$.galleria.next(); return false;">next &raquo;</a>
 
-.clear
+%h1 Comments
+
+.comments
+  - for comment in @album.comments do
+    .comment
+      %p
+        %strong= comment.user.name if comment.user
+        says:
+      %p= comment.text
+      %p
+        = time_ago_in_words comment.created_at
+        ago
+
+- form_for @album.comments.new, :url => album_comments_path(@album) do |f|
+  %p= f.text_field :user_name
+  %p= f.text_area :text
+  %p= f.submit "Say"
 
 .actions
   %p= link_to "Add photos to album", new_album_photo_path(@album)

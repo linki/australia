@@ -1,5 +1,5 @@
 %h1 Albums
-%h2 because pictures tell more
+%h2 ...because pictures tell more
 
 %table{:align => 'center'}    
   - @albums.in_groups_of(3, false) do |albums_row|
@@ -7,7 +7,7 @@
       - for album in albums_row
         %td
           %p= link_to album.name, album        
-          %p= link_to image_tag(album.photos.first.image.url(:medium)), album if album.photos.first
+          %p= link_to image_tag(album.photos.first.image.url(:medium), :class => 'album'), album if album.photos.first
 
           %p
             = date album.starts_at, :year => false

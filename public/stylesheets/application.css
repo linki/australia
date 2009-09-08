@@ -21,6 +21,21 @@ a:hover {
   margin-top: 2em;
 }
 
+.comments {
+  margin-top: 2em;
+}
+
+.comment {
+  margin-top: 1em;
+}
+
+img.album {
+  padding: 15px; border: 1px solid #ccc; background-color: #eee;
+}
+
+
+
+
 #flash_notice,
 #flash_error {
   padding: 5px 8px;
