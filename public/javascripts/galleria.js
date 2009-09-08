@@ -2,7 +2,7 @@ jQuery(function($) {
 		
 
 		
-		$('ul.galleria').galleria({
+		$('ul.gallery').galleria({
 			history   : true, // activates the history object for bookmarking, back-button etc.
 			clickNext : true, // helper for making the image clickable
 			insert    : '#main_image', // the containing selector for our main image
