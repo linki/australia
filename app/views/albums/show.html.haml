@@ -12,21 +12,12 @@
     
 %p.nav
   <a href="#" onclick="$.galleria.prev(); return false;">&laquo; previous</a> | <a href="#" onclick="$.galleria.next(); return false;">next &raquo;</a>
-    
-    
-/
-  %table    
-    - @album.photos.in_groups_of(3, false) do |photos_row|
-      %tr
-        - for photo in photos_row
-          %td
-            %p= link_to image_tag(photo.image.url(:medium)), album_photo_path(@album, photo)
-            %p= photo.description
 
 .clear
 
 .actions
   %p= link_to "Add photos to album", new_album_photo_path(@album)
+  %p= link_to "Edit photos of the album", album_photos_path(@album)  
   %p= link_to "Customize this album", edit_resource_path
   %p= link_to "Back to list of albums", collection_path
   %p= link_to 'Delete this album', resource_path, :confirm => 'Are you sure?', :method => :delete

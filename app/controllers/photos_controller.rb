@@ -34,4 +34,12 @@ class PhotosController < InheritedResources::Base
       failure.js
     end
   end
+  
+  def update_multiple
+    @album = Album.find(params[:album_id])
+    params[:photo].each do |id, attributes|
+      Photo.update(id, attributes)
+    end
+    redirect_to album_photos_path(@album)
+  end
 end
