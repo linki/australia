@@ -3,6 +3,8 @@ class CreateAlbums < ActiveRecord::Migration
     create_table :albums do |t|
       t.string :name
       t.text :description
+      t.datetime :starts_at
+      t.datetime :ends_at
       t.references :location
       t.references :user
       t.timestamps

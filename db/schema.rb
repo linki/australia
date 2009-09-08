@@ -14,6 +14,8 @@ ActiveRecord::Schema.define(:version => 20090905143607) do
   create_table "albums", :force => true do |t|
     t.string   "name"
     t.text     "description"
+    t.datetime "starts_at"
+    t.datetime "ends_at"
     t.integer  "location_id"
     t.integer  "user_id"
     t.datetime "created_at"
@@ -27,7 +29,6 @@ ActiveRecord::Schema.define(:version => 20090905143607) do
   end
 
   create_table "photos", :force => true do |t|
-    t.string   "name"
     t.text     "description"
     t.integer  "album_id"
     t.string   "image_file_name"

@@ -11,8 +11,15 @@ a:hover {
   margin: 2em 0;
 }
 
+.clear {
+  clear: both;
+  height: 0;
+  overflow: hidden;
+}
 
-
+.actions {
+  margin-top: 2em;
+}
 
 #flash_notice,
 #flash_error {

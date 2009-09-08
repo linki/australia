@@ -1,19 +1,22 @@
 %h1 Albums
 %h2 because pictures tell more
 
-/ 
-  - form_tag albums_path, :method => 'get' do
-    %p search an album
-    = text_field_tag :search, params[:search], :style => "width: 20em"
-    = submit_tag "Search"
-    
-%table    
+%table{:align => 'center'}    
   - @albums.in_groups_of(3, false) do |albums_row|
     %tr
       - for album in albums_row
         %td
+          %p= link_to album.name, album        
           %p= link_to image_tag(album.photos.first.image.url(:medium)), album if album.photos.first
-          %p= album.name
-          %p 27 Sep 2009
-          
-%p= link_to "Create a new album", new_resource_path
+
+          %p
+            = date album.starts_at, :year => false
+            \-
+            = date album.ends_at, :year => false
+            %br
+            = year album.ends_at            
+
+.clear
+
+.actions
+  %p= link_to "Create a new album", new_resource_path

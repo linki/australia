@@ -9,6 +9,12 @@
     %tr  
       %td= f.label :description
       %td= f.text_area :description
+    %tr  
+      %td= f.label :starts_at
+      %td= f.date_select :starts_at
+    %tr  
+      %td= f.label :ends_at
+      %td= f.date_select :ends_at
     %tr
       %td{:colspan => 2}= f.submit "Save"
           
