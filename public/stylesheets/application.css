@@ -29,14 +29,14 @@ a:hover {
   margin-top: 1em;
 }
 
-img.album {
+img.album_thumb {
 /*  padding: 5px; */
-  border: 3px solid #111; background-color: #000;
+/*  border: 1px solid #111; background-color: #000; */
 }
 
 .comment {
   
-  text-align: left;
+
   text-align: justify;
   margin: 2em auto 0;
   width: 50%;
@@ -47,6 +47,37 @@ img.album {
   text-align: right;
 }
 
+
+.album {
+  
+  font-size: 80%;
+  text-align: justify;
+  margin: 2em auto 0;
+  width: 50%;
+}
+
+.album .meta {
+/*  padding: 0em 1em; */
+  text-align: right;
+}
+
+.album hr {
+/*  background-color: #000; */
+}
+
+.album .description {
+  margin: 1em 1em;
+}
+
+.album .thumb {
+  float: left;
+  margin: 0em 1em;
+  padding-bottom: 0.5em;
+}
+
+.album .description {
+
+}
 
 
 
