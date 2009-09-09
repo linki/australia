@@ -15,4 +15,12 @@ module TimeAndDateHelper
       datetime.strftime(format)
     end
   end
+  
+  def timespan(starts_at, ends_at, options = {})
+    if starts_at.beginning_of_day == ends_at.beginning_of_day
+      date(starts_at, options)
+    else
+      date(starts_at, :year => starts_at.year != ends_at.year) + " - " + date(ends_at, options)
+    end
+  end  
 end

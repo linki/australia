@@ -8,10 +8,7 @@
         %p
           = link_to album.name, album
           %br
-          = date album.starts_at, :year => false
-          \-
-          = date album.ends_at, :year => false
-          = year album.ends_at
+          = timespan album.starts_at, album.ends_at, :year => true
         
       %hr
       .body

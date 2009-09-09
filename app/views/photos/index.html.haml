@@ -13,7 +13,7 @@
             %p= text_field_tag "photo[#{photo.id}][description]", photo.description
             %p= link_to 'delete', album_photo_path(@album, photo), :confirm => 'Are you sure?', :method => :delete
 
-  %p= submit_tag "Save"            
+  %p= submit_tag "Save"
 
 .actions
   %p= link_to "Add photos to album", new_album_photo_path(@album)
