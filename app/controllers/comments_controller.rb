@@ -1,5 +1,5 @@
 class CommentsController < InheritedResources::Base
-  belongs_to :album
+  belongs_to :album, :optional => true
   
   respond_to :html, :xml, :json, :js
   

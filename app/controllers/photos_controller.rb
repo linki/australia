@@ -14,7 +14,7 @@ class PhotosController < InheritedResources::Base
       success.js
       failure.html { render :action => "new" }
       failure.xml  { render :xml => @photo.errors, :status => :unprocessable_entity }
-      failure.json { render :json => { :result => 'error', :error => @asset.errors.full_messages.to_sentence } }        
+      failure.json { render :json => { :result => 'error', :error => @photo.errors.full_messages.to_sentence } }        
       failure.js
     end
   end
@@ -30,7 +30,7 @@ class PhotosController < InheritedResources::Base
       success.js
       failure.html { render :action => "edit" }
       failure.xml  { render :xml => @photo.errors, :status => :unprocessable_entity }
-      failure.json { render :json => { :result => 'error', :error => @asset.errors.full_messages.to_sentence } }
+      failure.json { render :json => { :result => 'error', :error => @photo.errors.full_messages.to_sentence } }
       failure.js
     end
   end

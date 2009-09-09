@@ -18,13 +18,15 @@
 .comments
   - for comment in @album.comments do
     .comment
-      %p
-        %strong= comment.user.name if comment.user
-        says:
-      %p= comment.text
-      %p
-        = time_ago_in_words comment.created_at
-        ago
+      .text
+        %p= comment.text
+      .meta
+        %p
+          = comment.user.name if comment.user
+          \-
+          = time_ago_in_words comment.created_at
+          ago
+      %hr
 
 - form_for @album.comments.new, :url => album_comments_path(@album) do |f|
   %p= f.text_field :user_name

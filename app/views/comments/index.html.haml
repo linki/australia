@@ -1,15 +1,17 @@
-- title "Comments"
+.comments
+  - for comment in @comments do
+    .comment
+      .text
+        %p= comment.text
+      .meta
+        %p
+          = comment.user.name if comment.user
+          \-
+          = time_ago_in_words comment.created_at
+          ago
+      %hr
 
-%table
-  %tr
-    %th Text
-    %th User
-  - for comment in @comments
-    %tr
-      %td= h comment.text
-      %td= h comment.user
-      %td= link_to 'Show', comment
-      %td= link_to 'Edit', edit_comment_path(comment)
-      %td= link_to 'Destroy', comment, :confirm => 'Are you sure?', :method => :delete
-
-%p= link_to "New Comment", new_comment_path
+- form_for Comment.new do |f|
+  %p= f.text_field :user_name
+  %p= f.text_area :text
+  %p= f.submit "Say"
