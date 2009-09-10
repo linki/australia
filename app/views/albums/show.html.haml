@@ -19,7 +19,7 @@
   - @comments.each do |comment|
     .comment
       .text
-        %p= comment.text
+        %p= simple_format h(comment.text)
       .meta
         %p
           = comment.user.name if comment.user
@@ -27,12 +27,19 @@
           = time_ago_in_words comment.created_at
           ago
       %hr
-      
 
-- form_for [@album, @comment] do |f|
-  %p= f.text_field :user_name
-  %p= f.text_area :text
-  %p= f.submit "Say"
+.new_comment
+  - form_for [@album, @comment] do |f|
+    %p
+      = f.label :user_name, "Your Name"
+      %br
+      = f.text_field :user_name
+    %p
+      = f.label :text, "Your Comment"
+      %br
+      = f.text_area :text
+    %p
+      = f.submit "Say it!"
 
 .actions
   %p= link_to "Add photos to album", new_album_photo_path(@album)

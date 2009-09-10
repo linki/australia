@@ -34,9 +34,8 @@ img.album_thumb {
 /*  border: 1px solid #111; background-color: #000; */
 }
 
-.comment {
-
-font-size: 80%;
+.comment, .new_comment {
+  font-size: 80%;
   text-align: justify;
   margin: 2em auto 0;
   width: 50%;
@@ -44,12 +43,30 @@ font-size: 80%;
 
 .comment .meta {
     margin: 0em 1em;
-color: #aa8055;  
+    color: #aa8055;  
   text-align: right;
 }
 
 .comment .text {
   margin: 0em 1em;
+}
+
+.new_comment {
+    text-align: left;
+    
+}
+
+.new_comment label {
+  
+}
+
+.new_comment input, .new_comment textarea {
+  margin: 0 0 1em 0;
+  width: 300px;
+}
+
+.new_comment textarea {
+  height: 100px;
 }
 
 

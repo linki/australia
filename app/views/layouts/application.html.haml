@@ -9,8 +9,8 @@
     - stylesheet_link_tag 'blueprint/print', :media => 'print'
     /[if IE]
       - stylesheet_link_tag 'blueprint/ie.css'
-    = stylesheet_link_tag 'reset', 'welcome', 'uploadify'
-    = javascript_include_tag 'jquery.min'
+    = stylesheet_link_tag 'reset', 'welcome', 'gritter', 'uploadify'
+    = javascript_include_tag 'jquery.min', 'jquery.gritter'
     = yield(:head)
     = stylesheet_link_tag 'application'
     = javascript_include_tag 'application'
@@ -18,7 +18,7 @@
   %body
     #container
       - flash.each do |name, msg|
-        = content_tag :div, msg, :id => "flash_#{name}"
+        = content_tag :div, msg, :id => "flash_#{name}", :style => 'display:none'
       
       - if show_title?
         %h1=h yield(:title)
