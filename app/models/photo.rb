@@ -1,5 +1,5 @@
 class Photo < ActiveRecord::Base
-  #attr_accessible :name, :description, :starts_at, :ends_at  
+  attr_accessible :name, :description, :image
   
   has_attached_file :image,
                     :styles => { :large => "800x600>", :medium => "300x300>", :thumb => "100x100>" }

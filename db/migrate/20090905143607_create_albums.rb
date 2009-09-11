@@ -7,6 +7,9 @@ class CreateAlbums < ActiveRecord::Migration
       t.datetime :ends_at
       t.references :location
       t.references :user
+      t.string :package_file_name
+      t.string :package_content_type
+      t.integer :package_file_size      
       t.timestamps
     end
   end

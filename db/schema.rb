@@ -18,6 +18,9 @@ ActiveRecord::Schema.define(:version => 20090908125114) do
     t.datetime "ends_at"
     t.integer  "location_id"
     t.integer  "user_id"
+    t.string   "package_file_name"
+    t.string   "package_content_type"
+    t.integer  "package_file_size"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -39,10 +42,11 @@ ActiveRecord::Schema.define(:version => 20090908125114) do
 
   create_table "photos", :force => true do |t|
     t.text     "description"
+    t.integer  "position"
     t.integer  "album_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
-    t.string   "image_file_size"
+    t.integer  "image_file_size"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

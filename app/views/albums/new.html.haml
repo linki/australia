@@ -2,7 +2,7 @@
 %h2 can't get enough?
 
 %table
-  - form_for @album do |f|
+  - form_for @album, :html => { :multipart => true } do |f|
     %tr
       %td= f.label :name
       %td= f.text_field :name
@@ -12,9 +12,12 @@
     %tr  
       %td= f.label :starts_at
       %td= f.date_select :starts_at
-    %tr  
+    %tr
       %td= f.label :ends_at
       %td= f.date_select :ends_at
+    %tr  
+      %td= f.label :package
+      %td= f.file_field :package
     %tr
       %td{:colspan => 2}= f.submit "Save"
           
