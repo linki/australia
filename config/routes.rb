@@ -1,6 +1,6 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :albums do |albums|
-    albums.resources :photos, :collection => { :update_multiple => :put }
+    albums.resources :photos, :collection => { :sort => :put, :update_multiple => :put }
     albums.resources :comments
   end
   

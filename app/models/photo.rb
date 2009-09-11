@@ -8,4 +8,6 @@ class Photo < ActiveRecord::Base
 #                    :path => ":attachment/:id/:style.:extension"
 
   belongs_to :album
+  
+  acts_as_list
 end

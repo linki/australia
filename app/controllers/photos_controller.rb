@@ -2,6 +2,11 @@ class PhotosController < InheritedResources::Base
   belongs_to :album
   
   respond_to :html, :xml, :json, :js
+  
+  def index
+    @album = Album.find(params[:album_id])
+    @photos = @album.photos.all(:order => 'position')
+  end
 
   def create
     @album = Album.find(params[:album_id])
@@ -42,4 +47,13 @@ class PhotosController < InheritedResources::Base
     end
     redirect_to album_photos_path(@album)
   end
+  
+  def sort
+    @album = Album.find(params[:album_id])
+    params[:photos].each_with_index do |id, index|
+      Photo.update_all(['position=?', index+1], ['id=?', id])
+    end
+    redirect_to album_photos_path(@album)
+  end
+  
 end

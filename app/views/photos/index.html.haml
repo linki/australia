@@ -1,19 +1,21 @@
+- javascript 'jquery-ui.min', 'jquery.form', 'sortable'
+- stylesheet 'jquery-ui/humanity/jquery-ui'
+
 %h1= @album.name
 %h2= @album.description
     
 #main_image
 
-- form_tag update_multiple_album_photos_path, :method => :put do
-  %table
-    - @album.photos.in_groups_of(3, false) do |photos_row|
-      %tr
-        - for photo in photos_row
-          %td
-            %p= link_to image_tag(photo.image.url(:medium)), album_photo_path(@album, photo)
-            %p= text_field_tag "photo[#{photo.id}][description]", photo.description
-            %p= link_to 'delete', album_photo_path(@album, photo), :confirm => 'Are you sure?', :method => :delete
+- form_tag sort_album_photos_path, :method => :put do
+  %ul#photos.sortable
+    - @photos.each do |photo|
+      %li
+        = hidden_field_tag 'photos[]', photo.id
+        = link_to image_tag(photo.image.url(:thumb)), album_photo_path(@album, photo)
+        - text_field_tag "photo[#{photo.id}][description]", photo.description
+        - link_to 'delete', album_photo_path(@album, photo), :confirm => 'Are you sure?', :method => :delete
 
-  %p= submit_tag "Save"
+.clear
 
 .actions
   %p= link_to "Add photos to album", new_album_photo_path(@album)

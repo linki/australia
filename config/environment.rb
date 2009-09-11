@@ -22,6 +22,8 @@ Rails::Initializer.run do |config|
   
   config.gem "justinfrench-formtastic", :lib => 'formtastic', :source => 'http://gems.github.com'
   config.gem "josevalim-inherited_resources", :lib => 'inherited_resources', :source => 'http://gems.github.com'
+  config.gem 'ryanb-acts-as-list', :lib => 'acts_as_list', :source => 'http://gems.github.com'
+  
   
   config.gem 'mime-types', :lib => "mime/types"
   
