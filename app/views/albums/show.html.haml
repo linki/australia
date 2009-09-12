@@ -7,10 +7,12 @@
 
 %ul.gallery
   - for photo in @photos
-    %li= "<a href='#{photo.image.url(:large)}' title='A caption'><img src='#{photo.image.url(:thumb)}' alt='Image01'></a></li>"
+    %li= link_to image_tag(photo.image.url(:thumb)), photo.image.url(:large)
     
 %p.nav
-  <a href="#" onclick="$.galleria.prev(); return false;">&laquo; previous</a> | <a href="#" onclick="$.galleria.next(); return false;">next &raquo;</a>
+  = link_to "&laquo; previous", '#', :onclick => "$.galleria.prev(); return false;"
+  |
+  = link_to "next &raquo;", '#', :onclick => "$.galleria.next(); return false;"
 
 %p.download
   = link_to "Download all (#{number_to_human_size @album.package_file_size})", @album.package.url

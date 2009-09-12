@@ -1,0 +1,13 @@
+ajax for comments
+clean up say it button
+image upload in list (maybe instantly sortable)
+cleanup forms
+order albums
+use verbose controllers
+australian locale?
+clean up growl notifications
+put delete cross in corner of an image
+sortable albums?
+multiple updating of descriptions
+- new urls /albums/1/photos/[positions|descriptions]/edit ??
+Choose a thumb for album or/and do some cycling
