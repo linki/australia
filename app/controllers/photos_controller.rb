@@ -56,4 +56,9 @@ class PhotosController < InheritedResources::Base
     redirect_to album_photos_path(@album)
   end
   
+  def descriptions
+    @album = Album.find(params[:album_id])
+    @photos = @album.photos.all(:order => 'position')
+  end  
+  
 end

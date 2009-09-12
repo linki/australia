@@ -51,6 +51,11 @@ img.album_thumb {
   margin: 0em 1em;
 }
 
+.comment .text p {
+  margin-top: 1em;
+}
+
+
 .new_comment {
     text-align: left;
     

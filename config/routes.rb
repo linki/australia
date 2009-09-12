@@ -1,10 +1,15 @@
 ActionController::Routing::Routes.draw do |map|
   map.resources :albums do |albums|
-    albums.resources :photos, :collection => { :sort => :put, :update_multiple => :put }
+    albums.resources :photos, :collection => { :sort => :put, :descriptions => :get, :update_multiple => :put }
     albums.resources :comments
   end
   
   map.resources :comments
+  
+  map.resources :users
+  map.resources :locations
+  
+  map.root :albums
 
   # The priority is based upon order of creation: first created -> highest priority.
 

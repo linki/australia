@@ -1,19 +1,21 @@
 - javascript 'swfobject', 'jquery.uploadify.min'
+- stylesheet 'uploadify'
 
 %h1= @album.name
 %h2= @album.description
-    
-#photos
+
+%ul#photos
+
+.clear
 
 - form_for @photo, :url => collection_path, :html => { :multipart => true } do |f|
   #photo_uploader
     = f.file_field :image
-  %p <a href="javascript:jQuery('#photo_image').uploadifyClearQueue()">Cancel All Uploads</a>
-
-%p= link_to "Back to album", parent_path
-%p= link_to "Back to photos", collection_path
+  %p= link_to "Cancel All Uploads", '#', :onclick => "$('#photo_image').uploadifyClearQueue(); return false;"
   
-
+.actions
+  %p= link_to "Back to album", parent_path
+  %p= link_to "Back to photos", collection_path
 
 - content_for :head do
   %script{:type => "text/javascript"}    

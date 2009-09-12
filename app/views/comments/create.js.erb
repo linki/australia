@@ -1,0 +1,13 @@
+<% if @comment.valid? %>
+  $(".comments").append("<%= escape_javascript render(:partial => @comment) %>");
+  $("#new_comment")[0].reset();
+  $.gritter.add({
+    // (string | mandatory) the heading of the notification
+    title: 'Notice',
+    // (string | mandatory) the text inside the notification
+    text: '<%= flash[:notice] %>'
+  });
+  <% flash.discard %>
+<% else %>
+  alert('enter a text');
+<% end %>

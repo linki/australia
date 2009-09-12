@@ -6,6 +6,8 @@ class CreateComments < ActiveRecord::Migration
       t.references :user
       t.timestamps
     end
+    
+    add_index :comments, [:commentable_id, :commentable_type]
   end
   
   def self.down

@@ -6,6 +6,7 @@ class CommentsController < InheritedResources::Base
   def create
     create! do |response|
       response.html { redirect_to parent_path }
+      response.js
     end
   end
 end

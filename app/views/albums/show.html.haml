@@ -1,48 +1,44 @@
-- javascript 'jquery.galleria.min', 'galleria'
+- javascript 'jquery.galleria.min', 'galleria', 'comments'
 - stylesheet 'galleria'
 
 %h1= @album.name
     
 #main_image
 
-%ul.gallery
-  - for photo in @photos
-    %li= link_to image_tag(photo.image.url(:thumb)), photo.image.url(:large)
-    
 %p.nav
   = link_to "&laquo; previous", '#', :onclick => "$.galleria.prev(); return false;"
   |
   = link_to "next &raquo;", '#', :onclick => "$.galleria.next(); return false;"
 
+%ul.gallery
+  - @photos.each_with_index do |photo, index|
+    - if index > 0
+      %li= link_to image_tag(photo.image.url(:thumb)), photo.image.url(:large), :title => photo.description
+    - else
+      %li.active= link_to image_tag(photo.image.url(:thumb)), photo.image.url(:large), :title => photo.description
+
+.clear
+
 %p.download
-  = link_to "Download all (#{number_to_human_size @album.package_file_size})", @album.package.url
+  = link_to "Download all with max quality (#{number_to_human_size @album.package_file_size})", @album.package.url
 
 %h1 Comments
 %h2 ...because humans tell most
 
 .comments
-  - @comments.each do |comment|
-    .comment
-      .text
-        %p= simple_format h(comment.text)
-      .meta
-        %p
-          = comment.user.name if comment.user
-          %br
-          = time_ago_in_words comment.created_at
-          ago
-      %hr
+  = render :partial => @comments
 
 .new_comment
-  - form_for [@album, @comment] do |f|
-    %p
-      = f.label :user_name, "Your Name"
-      %br
-      = f.text_field :user_name
+  - form_for [@album, @comment], :html => { :id => 'new_comment' } do |f|
     %p
       = f.label :text, "Your Comment"
       %br
       = f.text_area :text
+    %p
+      = f.label :user_name, "Your Name"
+      %br
+      = f.text_field :user_name
+      
     %p
       = f.submit "Say it!"
 
