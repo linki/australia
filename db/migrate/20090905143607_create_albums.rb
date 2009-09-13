@@ -3,8 +3,9 @@ class CreateAlbums < ActiveRecord::Migration
     create_table :albums do |t|
       t.string :name
       t.text :description
-      t.datetime :starts_at
-      t.datetime :ends_at
+      t.date :starts_at
+      t.date :ends_at
+      t.references :thumb
       t.references :location
       t.references :user
       t.string :package_file_name

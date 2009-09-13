@@ -9,12 +9,11 @@
           = link_to album.name, album
           %br
           = timespan album.starts_at, album.ends_at, :year => true
-        
       %hr
       .body
         %p
-          .thumb= link_to image_tag(album.photos.first.image.url(:medium), :class => 'album_thumb'), album if album.photos.first
-          .description= album.description
+          .thumb= link_to image_tag(album.thumbnail.image.url(:medium), :class => 'album_thumb'), album if album.thumbnail
+          .description= simple_format album.description
           .clear
 
 .actions

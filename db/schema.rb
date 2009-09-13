@@ -14,8 +14,9 @@ ActiveRecord::Schema.define(:version => 20090908125114) do
   create_table "albums", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.datetime "starts_at"
-    t.datetime "ends_at"
+    t.date     "starts_at"
+    t.date     "ends_at"
+    t.integer  "thumb_id"
     t.integer  "location_id"
     t.integer  "user_id"
     t.string   "package_file_name"
@@ -34,6 +35,8 @@ ActiveRecord::Schema.define(:version => 20090908125114) do
     t.datetime "updated_at"
   end
 
+  add_index "comments", ["commentable_id", "commentable_type"], :name => "index_comments_on_commentable_id_and_commentable_type"
+
   create_table "locations", :force => true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -50,6 +53,8 @@ ActiveRecord::Schema.define(:version => 20090908125114) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  add_index "photos", ["album_id"], :name => "index_photos_on_album_id"
 
   create_table "users", :force => true do |t|
     t.string   "name"

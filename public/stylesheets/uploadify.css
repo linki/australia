@@ -23,9 +23,10 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 THE SOFTWARE.
 */
 .uploadifyQueueItem {
+  color: #18110c;
 	font: 11px Verdana, Geneva, sans-serif;
-	border: 2px solid #E5E5E5;
-	background-color: #F5F5F5;
+	border: 2px solid #ffffcc;
+	background-color: #ffffcc;
 	margin-top: 5px;
 	padding: 10px;
 	width: 350px;

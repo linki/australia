@@ -2,7 +2,6 @@
 - stylesheet 'uploadify'
 
 %h1= @album.name
-%h2= @album.description
 
 %ul#photos
 
@@ -14,11 +13,12 @@
   %p= link_to "Cancel All Uploads", '#', :onclick => "$('#photo_image').uploadifyClearQueue(); return false;"
   
 .actions
-  %p= link_to "Back to album", parent_path
-  %p= link_to "Back to photos", collection_path
+  %p= link_to "Show the album", parent_path
+  %p= link_to "Change descriptions of photos", descriptions_album_photos_path(@album)
+  %p= link_to "Edit photos of the album", collection_path
 
 - content_for :head do
-  %script{:type => "text/javascript"}    
+  %script{:type => "text/javascript"}
     $(document).ready(function() {
     $('#photo_image').uploadify({
     'uploader' : '/flash/uploadify.swf',

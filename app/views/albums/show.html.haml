@@ -2,45 +2,50 @@
 - stylesheet 'galleria'
 
 %h1= @album.name
-    
-#main_image
 
-%p.nav
-  = link_to "&laquo; previous", '#', :onclick => "$.galleria.prev(); return false;"
-  |
-  = link_to "next &raquo;", '#', :onclick => "$.galleria.next(); return false;"
+- if @album.photos.any?
 
-%ul.gallery
-  - @photos.each_with_index do |photo, index|
-    - if index > 0
-      %li= link_to image_tag(photo.image.url(:thumb)), photo.image.url(:large), :title => photo.description
-    - else
-      %li.active= link_to image_tag(photo.image.url(:thumb)), photo.image.url(:large), :title => photo.description
+  #main_image
 
-.clear
+  %p.nav
+    = link_to "&laquo; previous", '#', :onclick => "$.galleria.prev(); return false;"
+    |
+    = link_to "next &raquo;", '#', :onclick => "$.galleria.next(); return false;"
 
-%p.download
-  = link_to "Download all with max quality (#{number_to_human_size @album.package_file_size})", @album.package.url
+  %ul.gallery
+    - @photos.each_with_index do |photo, index|
+      - if index > 0
+        %li= link_to image_tag(photo.image.url(:thumb)), photo.image.url(:large), :title => photo.description
+      - else
+        %li.active= link_to image_tag(photo.image.url(:thumb)), photo.image.url(:large), :title => photo.description
 
-%h1 Comments
-%h2 ...because humans tell most
+  .clear
 
-.comments
-  = render :partial => @comments
+  %p.download
+    = link_to "Download all with max quality (#{number_to_human_size @album.package_file_size})", @album.package.url
 
-.new_comment
-  - form_for [@album, @comment], :html => { :id => 'new_comment' } do |f|
-    %p
-      = f.label :text, "Your Comment"
-      %br
-      = f.text_area :text
-    %p
-      = f.label :user_name, "Your Name"
-      %br
-      = f.text_field :user_name
+  %h1 Comments
+  %h2 ...because humans tell most
+
+  .comments
+    = render :partial => @comments
+
+  .new_comment
+    - form_for [@album, @comment], :html => { :id => 'new_comment' } do |f|
+      %p
+        = f.label :text, "Your Comment"
+        %br
+        = f.text_area :text
+      %p
+        = f.label :user_name, "Your Name"
+        %br
+        = f.text_field :user_name
       
-    %p
-      = f.submit "Say it!"
+      %p
+        = f.submit "Say it!"
+        
+- else
+  %p.empty There aren't any photos in this album
 
 .actions
   %p= link_to "Add photos to album", new_album_photo_path(@album)

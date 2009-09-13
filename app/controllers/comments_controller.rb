@@ -8,5 +8,6 @@ class CommentsController < InheritedResources::Base
       response.html { redirect_to parent_path }
       response.js
     end
+    cookies[:user_name] = @comment.user.name if @comment.user
   end
 end

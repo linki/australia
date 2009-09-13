@@ -1,5 +1,5 @@
 class Photo < ActiveRecord::Base
-  attr_accessible :name, :description, :image
+  attr_accessible :name, :description, :image, :thumbnail
   
   has_attached_file :image,
                     :styles => { :large => "800x600>", :medium => "300x300>", :thumb => "100x100>" }
@@ -10,4 +10,12 @@ class Photo < ActiveRecord::Base
   belongs_to :album
   
   acts_as_list
+  
+  def thumbnail
+    album && album.thumb == self
+  end
+  
+  def thumbnail=(boolean)
+    album.update_attribute(:thumb, boolean == "1" ? self : nil) if album
+  end
 end

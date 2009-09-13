@@ -10,7 +10,12 @@ class AlbumsController < InheritedResources::Base
     @album = Album.find(params[:id])
     @photos = @album.photos.all(:order => 'position')
     @comments = @album.comments.all(:order => 'created_at')
-    @comment = Comment.new
+    @comment = Comment.new(:user_name => cookies[:user_name])
     show!
+  end
+  
+  def new
+    @album = Album.new
+    @album.starts_at = @album.ends_at = Date.today
   end
 end

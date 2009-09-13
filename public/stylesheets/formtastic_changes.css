@@ -10,6 +10,14 @@ form.formtastic fieldset ol li p.inline-hints { color:#333; }
 --------------------------------------------------------------------------------------------------*/
 
 form.formtastic {
-  margin-top: 2em;
+  margin: 2em auto 0;
   width: 60%;
+}
+
+form.formtastic legend {
+  color: #FFFFCC;
+}
+
+form.formtastic textarea {
+  height: 10em;
 }

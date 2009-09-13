@@ -1,16 +1,15 @@
 %h1= @album.name
-%h2= @album.description
     
 #main_image
 
-%table
+%table.photos
   - form_tag update_multiple_album_photos_path(@album), :method => :put do
     - @photos.each do |photo|
       %tr
         %td
           = link_to image_tag(photo.image.url(:thumb)), album_photo_path(@album, photo)
         %td
-          = text_area_tag "photo[#{photo.id}][description]", photo.description
+          = text_area_tag "photo[#{photo.id}][description]", photo.description, :cols => 60, :rows => 6
     %tr
       %td
         = submit_tag "Save!"

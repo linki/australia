@@ -1,8 +1,10 @@
-- title "Edit Album"
+%h1= "Edit Album \"#{@album.name}\""
+%h2 you wanna change something?
 
 = render :partial => 'form'
 
-%p
-  = link_to "Show", album_path(@album)
-  |
-  = link_to "View All", albums_path
+.actions
+  %p= link_to "Show the album", resource_path
+  %p= link_to "Add photos to album", new_album_photo_path(@album)
+  %p= link_to "Edit photos of the album", album_photos_path(@album)  
+  %p= link_to "Back to list of albums", collection_path

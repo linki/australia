@@ -114,8 +114,20 @@ img.album_thumb {
   margin-top: 2em;
 }
 
+p.empty {
+  margin-top: 2em;
+  font-size:.8em;
+}
 
+table.photos {
+  width: 50%;
+  margin: 0 auto;
+}
 
+#photo_uploader {
+  width: 30%;
+  margin: 0 auto 0.5em;
+}
 
 #flash_notice,
 #flash_error {
