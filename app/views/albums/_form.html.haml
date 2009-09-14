@@ -1,4 +1,4 @@
-- semantic_form_for @album, :html => { :multipart => true } do |f|
+- semantic_form_for @album do |f|
   - f.inputs do
     = f.input :name
     = f.input :description
@@ -10,6 +10,6 @@
           %li{:class => (photo == @album.thumb) ? 'ui-selected' : ''}
             = image_tag photo.image.url(:thumb)
             = f.radio_button :thumb_id, photo.id, :style => 'display: none'
-    = f.input :package
+    = f.input :bundle, :as => :boolean unless @album.new_record?
   - f.buttons do
     = f.submit "Save"
