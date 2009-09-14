@@ -86,8 +86,13 @@ img.album_thumb {
 .album .meta {
 /*  color: #aa8055;  */
 /*  margin: 0em 1em; */
-  text-align: right;
+  text-align: right; 
 }
+
+.album .meta .title {
+  float:left;
+}
+
 
 .album hr {
 /*  background-color: #000; */
