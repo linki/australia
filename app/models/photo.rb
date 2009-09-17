@@ -3,9 +3,9 @@ class Photo < ActiveRecord::Base
   
   has_attached_file :image,
                     :styles => { :large => "800x600>", :medium => "300x300>", :thumb => "100x100>" }
-#                    :storage => :s3,
-#                    :s3_credentials => "#{RAILS_ROOT}/config/amazon_s3.yml",
-#                    :path => ":attachment/:id/:style.:extension"
+                    # :storage => :s3,
+                    # :s3_credentials => "#{RAILS_ROOT}/config/amazon_s3.yml",
+                    # :path => ":attachment/:id/:style/:filename"
 
   belongs_to :album
   
