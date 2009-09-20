@@ -48,9 +48,12 @@
 - else
   %p.empty There aren't any photos in this album
 
+
 .actions
-  %p= link_to "Add photos to album", new_album_photo_path(@album)
-  %p= link_to "Edit photos of the album", album_photos_path(@album)  
-  %p= link_to "Customize this album", edit_resource_path
+  /
+    %p= link_to "Add photos to album", new_album_photo_path(@album)
+    %p= link_to "Edit photos of the album", album_photos_path(@album)  
+    %p= link_to "Customize this album", edit_resource_path
   %p= link_to "Back to list of albums", collection_path
-  %p= link_to 'Delete this album', resource_path, :confirm => 'Are you sure?', :method => :delete
+  /
+    %p= link_to 'Delete this album', resource_path, :confirm => 'Are you sure?', :method => :delete
