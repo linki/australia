@@ -2,7 +2,7 @@ class AlbumsController < InheritedResources::Base
   respond_to :html, :xml, :json, :js
   
   def index
-    @albums = Album.all(:order => 'created_at DESC')
+    @albums = Album.all(:order => 'starts_at DESC, ends_at DESC')
     index!
   end
   
