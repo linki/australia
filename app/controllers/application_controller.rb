@@ -10,7 +10,16 @@ class ApplicationController < ActionController::Base
   
   helper_method :admin?
   
+  private
+  
   def admin?
     session[:password] == 'tooheys'
+  end
+  
+  def admin_required
+    return true if admin?
+    flash[:error] = "You must be logged in to access this page."
+    redirect_to root_path
+    false
   end
 end

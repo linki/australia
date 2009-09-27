@@ -1,6 +1,11 @@
 class AlbumsController < InheritedResources::Base
-  respond_to :html, :xml, :json, :js
+  before_filter :admin_required, :only => :new
   
+  respond_to :html, :xml, :json, :js
+
+  # caches_page :index, :show
+  # cache_sweeper :album_sweeper, :only => [:create, :update, :destroy]
+    
   def index
     @albums = Album.all(:order => 'starts_at DESC, ends_at DESC')
     index!

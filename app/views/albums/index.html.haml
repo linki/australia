@@ -14,7 +14,9 @@
       .body
         %p
           .thumb= link_to image_tag(album.thumbnail.image.url(:medium), :class => 'album_thumb'), album if album.thumbnail
-          .description= simple_format album.description
+          .description
+            %p= simple_format album.description
+            %p= link_to "[edit]", edit_resource_path(album) if admin?
           .clear
 
 - if admin?

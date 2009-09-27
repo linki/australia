@@ -1,7 +1,11 @@
 class PhotosController < InheritedResources::Base
+  before_filter :admin_required
+    
   belongs_to :album
   
   respond_to :html, :xml, :json, :js
+  
+  # cache_sweeper :photo_sweeper, :only => [:create, :update, :destroy, :update_multiple, :sort]
   
   def index
     @album = Album.find(params[:album_id])
@@ -40,6 +44,11 @@ class PhotosController < InheritedResources::Base
     end
   end
   
+  def descriptions
+    @album = Album.find(params[:album_id])
+    @photos = @album.photos.all(:order => 'position')
+  end
+    
   def update_multiple
     @album = Album.find(params[:album_id])
     params[:photo].each do |id, attributes|
@@ -55,10 +64,4 @@ class PhotosController < InheritedResources::Base
     end
     redirect_to album_photos_path(@album)
   end
-  
-  def descriptions
-    @album = Album.find(params[:album_id])
-    @photos = @album.photos.all(:order => 'position')
-  end  
-  
 end

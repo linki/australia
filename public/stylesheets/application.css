@@ -108,8 +108,7 @@ img.album_thumb {
   padding-bottom: 0.5em;
 }
 
-.album .description {
-
+.album .description p {
 }
 
 #photos { list-style-type: none; margin: 0 auto; padding: 0; width: 90%;}
