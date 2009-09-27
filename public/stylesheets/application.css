@@ -89,6 +89,10 @@ img.album_thumb {
   text-align: right; 
 }
 
+.album .meta #name {
+  float: left;
+}
+
 .album .meta .title {
   float:left;
 }

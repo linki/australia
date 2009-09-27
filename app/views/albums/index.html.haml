@@ -6,10 +6,8 @@
     .album
       .meta
         %p
-          %span.date
-            = link_to album.name, album
-            %br
-            = timespan album.starts_at, album.ends_at, :year => true
+          %span#name= link_to album.name, album
+          %span#date= timespan album.starts_at, album.ends_at, :year => true
       %hr
       .body
         %p
