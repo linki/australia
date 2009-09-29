@@ -16,7 +16,7 @@
 .gallery2 li div{left:240px}
 .gallery2 li div .caption{font:italic 0.7em/1.4 georgia,serif;}
 
-#main_image{margin:2em auto 3em auto;height:600px;width:800px;background:#18110c;}
+#main_image{margin:1em auto 2em auto;height:600px;width:80%;background:#18110c;}
 #main_image img{margin-bottom:10px;}
 
 .nav{padding:0.5em 0 1em;clear:both;font:80%; letter-spacing:3px}
