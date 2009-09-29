@@ -46,6 +46,7 @@ class PhotosController < InheritedResources::Base
   
   def descriptions
     @album = Album.find(params[:album_id])
+    @album.asdasd
     @photos = @album.photos.all(:order => 'position')
   end
     
