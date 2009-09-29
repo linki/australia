@@ -5,7 +5,7 @@ module TimeAndDateHelper
   
   def year(datetime)
     datetime.strftime('%Y') unless datetime.nil?
-  end  
+  end
 
   def date(datetime, options = {})
     unless datetime.nil?

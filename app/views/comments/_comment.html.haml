@@ -3,7 +3,7 @@
     %p= simple_format h(comment.text)
   .meta
     %p
-      = comment.user ? comment.user.name : 'anonymous'
+      = comment.user ? h(comment.user.name) : 'anonymous'
       %br
       = time_ago_in_words comment.created_at
       ago
