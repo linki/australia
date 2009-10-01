@@ -1,0 +1,27 @@
+--- 
+javascripts: 
+- base: 
+  - jquery.min
+  - jquery.form
+  - jquery.gritter
+  - jquery.galleria.min  
+  - swfobject
+  - jquery.uploadify.min
+  - jquery-ui.min
+  - sortable
+  - selectable
+  - galleria
+  - comments
+  - application
+stylesheets: 
+- base: 
+  - reset
+  - welcome
+  - gritter
+  - uploadify
+  - formtastic
+  - formtastic_changes
+  - galleria
+  - application
+  - jquery-ui/humanity/jquery-ui
+
