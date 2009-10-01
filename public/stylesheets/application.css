@@ -102,7 +102,7 @@ img.album_thumb {
 }
 
 .album .description {
-
+  margin: 1em 1em;
 }
 
 .album .thumb {
@@ -112,7 +112,7 @@ img.album_thumb {
 }
 
 .album .description p+p {
-  padding: 0 0 1em 0;
+  padding-bottom: 1em;
 }
 
 #photos { list-style-type: none; margin: 0 auto; padding: 0; width: 90%;}
