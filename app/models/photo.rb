@@ -19,11 +19,3 @@ class Photo < ActiveRecord::Base
     image_file_name
   end
 end
-
-
-
- a.photos.each {|p| p.image = File.open("#{RAILS_ROOT}/public/system/images/#{p.id}/original/#{p.image_file_name}"); p.save!; puts p.id }
- 
-=> #<File:/home/martin/www/australia/releases/20091001075601/public/system/images/1055/original/IMG_1934.JPG>
->> p.save!
-=> true
