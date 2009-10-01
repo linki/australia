@@ -9,7 +9,6 @@ class Photo < ActiveRecord::Base
                     :s3_headers => { 'Expires' => 10.years.from_now.httpdate },
                     :url => ":s3_alias_url",
                     :path => ":attachment/:id/:style/:filename"
-                    
 
   belongs_to :album
   

@@ -25,8 +25,10 @@
   - if @album.package_file_name
     %p.download
       = link_to "Download all with max quality (#{number_to_human_size @album.package_file_size})", @album.package.url
+  
 
-  %h1 Comments
+
+  %h1 <a name="comments">Comments</a>
   %h2 ...because humans tell most
 
   .comments

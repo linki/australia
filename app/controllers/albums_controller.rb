@@ -7,7 +7,7 @@ class AlbumsController < InheritedResources::Base
   # cache_sweeper :album_sweeper, :only => [:create, :update, :destroy]
     
   def index
-    @albums = Album.all(:order => 'starts_at DESC, ends_at DESC', :include => :photos)
+    @albums = Album.all(:order => 'starts_at DESC, ends_at DESC', :include => [:photos, :comments])
     index!
   end
   

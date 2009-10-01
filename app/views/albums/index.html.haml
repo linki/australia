@@ -11,9 +11,10 @@
       %hr
       .body
         %p
-          .thumb= link_to image_tag(album.thumbnail.image.url(:medium), :class => 'album_thumb'), album if album.thumbnail
           .description
             %p= simple_format album.description
+            - if album.comments.any?
+              %p= link_to pluralize(album.comments.size, "Comment"), album_path(album, :anchor => 'comments')
             %p= link_to "[edit]", edit_resource_path(album) if admin?
           .clear
 
