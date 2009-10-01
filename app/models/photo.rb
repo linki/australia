@@ -6,8 +6,10 @@ class Photo < ActiveRecord::Base
                     :storage => :s3,
                     :s3_credentials => "#{RAILS_ROOT}/config/amazon_s3.yml",
                     :s3_host_alias => YAML.load_file("#{RAILS_ROOT}/config/amazon_s3.yml")[RAILS_ENV]['host_alias'],
+                    :s3_headers => { 'Expires' => 10.years.from_now.httpdate },
                     :url => ":s3_alias_url",
                     :path => ":attachment/:id/:style/:filename"
+                    
 
   belongs_to :album
   
@@ -17,3 +19,11 @@ class Photo < ActiveRecord::Base
     image_file_name
   end
 end
+
+
+
+ a.photos.each {|p| p.image = File.open("#{RAILS_ROOT}/public/system/images/#{p.id}/original/#{p.image_file_name}"); p.save!; puts p.id }
+ 
+=> #<File:/home/martin/www/australia/releases/20091001075601/public/system/images/1055/original/IMG_1934.JPG>
+>> p.save!
+=> true

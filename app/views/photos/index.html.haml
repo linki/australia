@@ -4,8 +4,6 @@
 %h1= @album.name
 %h2= @album.description
     
-#main_image
-
 - form_tag sort_album_photos_path, :method => :put do
   %ul#photos.sortable
     - @photos.each do |photo|
