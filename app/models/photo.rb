@@ -12,7 +12,7 @@ class Photo < ActiveRecord::Base
 
   belongs_to :album
   
-  acts_as_list
+  acts_as_list :scope => :album
   
   def name
     image_file_name
