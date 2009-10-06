@@ -4,6 +4,7 @@
     = f.input :description
     = f.input :starts_at
     = f.input :ends_at
+    = f.input :published, :as => :boolean
     #photos.text.optional
       %ul#selectable
         - @album.photos.each do |photo|

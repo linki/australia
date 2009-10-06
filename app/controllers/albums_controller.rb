@@ -7,12 +7,13 @@ class AlbumsController < InheritedResources::Base
   # cache_sweeper :album_sweeper, :only => [:create, :update, :destroy]
     
   def index
-    @albums = Album.all(:order => 'starts_at DESC, ends_at DESC', :include => [:photos, :comments])
+    @albums = (admin? ? Album : Album.published).all(:order => 'starts_at DESC, ends_at DESC', :include => [:photos, :comments])
     index!
   end
   
   def show
     @album = Album.find(params[:id])
+    raise ActiveRecord::RecordNotFound unless @album.published? || admin?
     @photos = @album.photos.all(:order => 'position')
     @comments = @album.comments.all(:order => 'created_at', :include => :user)
     @comment = Comment.new(:user_name => cookies[:user_name])
