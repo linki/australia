@@ -10,8 +10,7 @@
       %li
         = hidden_field_tag 'photos[]', photo.id
         = link_to image_tag(photo.image.url(:thumb)), album_photo_path(@album, photo)
-        - text_field_tag "photo[#{photo.id}][description]", photo.description
-        - link_to 'delete', album_photo_path(@album, photo), :confirm => 'Are you sure?', :method => :delete
+        = link_to 'delete', album_photo_path(@album, photo), :confirm => 'Are you sure?', :method => :delete
 
 .clear
 

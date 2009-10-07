@@ -25,6 +25,10 @@ a:hover {
   margin-top: 2em;
 }
 
+.comment .text p+p {
+  padding-bottom: 1em;
+}
+
 .comment {
   margin-top: 1em;
 }
@@ -116,7 +120,7 @@ img.album_thumb {
 }
 
 #photos { list-style-type: none; margin: 0 auto; padding: 0; width: 90%;}
-#photos li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 130px; height: 125px; font-size: 4em; text-align: center; }
+#photos li { margin: 3px 3px 3px 0; padding: 1px; float: left; width: 130px; height: 125px; font-size: 1em; text-align: center; }
 
 .download {
   margin-top: 2em;
@@ -142,6 +146,10 @@ background:#F39814 none repeat scroll 0 0;
 color:white;
 }
 
+#footnotes_debug {
+  font-size: 12pt;  
+}
+    
 #flash_notice,
 #flash_error {
   padding: 5px 8px;

@@ -1,6 +1,9 @@
-.comment
+- div_for comment do
   .text
-    %p= simple_format h(comment.text)
+    %p
+      = simple_format h(comment.text)
+      - if admin?
+        = link_to "[delete]", [comment.commentable, comment], :confirm => 'Are you sure?', :method => :delete
   .meta
     %p
       = comment.user ? h(comment.user.name) : 'anonymous'

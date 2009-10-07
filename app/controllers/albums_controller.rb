@@ -1,7 +1,7 @@
 class AlbumsController < InheritedResources::Base
-  before_filter :admin_required, :only => :new
+  before_filter :admin_required, :except => [:index, :show]
   
-  respond_to :html, :xml, :json, :js
+  respond_to :html, :xml, :json
 
   # caches_page :index, :show
   # cache_sweeper :album_sweeper, :only => [:create, :update, :destroy]

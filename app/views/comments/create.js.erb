@@ -1,6 +1,5 @@
 <% if @comment.valid? %>
   $(".comments").append("<%= escape_javascript render(:partial => @comment) %>");
-  //$("#new_comment")[0].reset();
   $("#comment_text").val('');
   $.gritter.add({
     title: 'Notice',
