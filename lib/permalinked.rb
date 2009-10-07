@@ -12,7 +12,7 @@ module Permalinked
       instance_eval do
         define_method "to_param" do
           permalink  = options[:id] == true ? send(:id).to_s + '-' : ''
-          permalink += send(options[:by].to_sym).gsub(/\s/, '-').gsub(/[^\w-]/, '') if send(options[:by].to_sym)
+          permalink += send(options[:by].to_sym).gsub(/\s/, '-').gsub(/[^\w-]/, '').gsub(/--/, '-') if send(options[:by].to_sym)
           permalink.downcase! if options[:downcase] == true
           permalink.to_s
         end
