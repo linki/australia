@@ -1,10 +1,11 @@
-- semantic_form_for @album do |f|
+- semantic_form_for @album, :html => { :multipart => true } do |f|
   - f.inputs do
     = f.input :name
     = f.input :description
     = f.input :starts_at
     = f.input :ends_at
     = f.input :published, :as => :boolean
+    = f.input :package
     #photos.text.optional
       %ul#selectable
         - @album.photos.each do |photo|
