@@ -17,6 +17,7 @@ class AlbumsController < InheritedResources::Base
     @photos = @album.photos.all(:order => 'position')
     @comments = @album.comments.all(:order => 'created_at', :include => :user)
     @comment = Comment.new(:user_name => cookies[:user_name])
+    @album.increase_view_count!
     show!
   end
   
