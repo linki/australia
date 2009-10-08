@@ -13,7 +13,7 @@ class ApplicationController < ActionController::Base
   private
   
   def admin?
-    session[:password] == 'tooheys'
+    session[:password] == PASSWORD
   end
   
   def admin_required
