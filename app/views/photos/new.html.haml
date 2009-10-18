@@ -10,7 +10,7 @@
 
 - form_for @photo, :url => collection_path, :html => { :multipart => true } do |f|
   #photo_uploader
-    = f.file_field :image
+    = f.file_field :image, :style => 'display:none'
   %p= link_to "Cancel All Uploads", '#', :onclick => "$('#photo_image').uploadifyClearQueue(); return false;"
   
 .actions
@@ -18,7 +18,7 @@
   %p= link_to "Change descriptions of photos", descriptions_album_photos_path(@album)
   %p= link_to "Edit photos of the album", collection_path
 
-- content_for :head do
+- content_for :foot do
   %script{:type => "text/javascript"}
     $(document).ready(function() {
     $('#photo_image').uploadify({
