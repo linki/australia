@@ -3,9 +3,6 @@ class AlbumsController < InheritedResources::Base
   
   respond_to :html, :xml, :json
 
-  # caches_page :index, :show
-  # cache_sweeper :album_sweeper, :only => [:create, :update, :destroy]
-    
   def index
     @albums = (admin? ? Album : Album.published).all(:order => 'starts_at DESC, ends_at DESC', :include => [:photos, :comments])
     index!
@@ -24,5 +21,9 @@ class AlbumsController < InheritedResources::Base
   def new
     @album = Album.new
     @album.starts_at = @album.ends_at = Date.today
+    new!
   end
+  
+  # caches_page :index, :show
+  # cache_sweeper :album_sweeper, :only => [:create, :update, :destroy]
 end

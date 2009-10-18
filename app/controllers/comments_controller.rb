@@ -14,9 +14,5 @@ class CommentsController < InheritedResources::Base
     cookies[:user_name] = @comment.user.name if @comment.user
   end
   
-  def destroy
-    destroy! do |response|
-      response.html { redirect_to parent_path }
-    end
-  end
+  destroy! { parent_path }
 end

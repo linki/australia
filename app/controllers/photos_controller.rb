@@ -5,11 +5,10 @@ class PhotosController < InheritedResources::Base
   
   respond_to :html, :xml, :json, :js
   
-  # cache_sweeper :photo_sweeper, :only => [:create, :update, :destroy, :update_multiple, :sort]
-  
   def index
     @album = Album.find(params[:album_id])
     @photos = @album.photos.all(:order => 'position')
+    index!
   end
 
   def create
@@ -64,4 +63,6 @@ class PhotosController < InheritedResources::Base
     end
     redirect_to album_photos_path(@album)
   end
+  
+  # cache_sweeper :photo_sweeper, :only => [:create, :update, :destroy, :update_multiple, :sort]  
 end
