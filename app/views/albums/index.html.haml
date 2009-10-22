@@ -19,13 +19,13 @@
             %p= simple_format album.description
             - if album.comments.any?
               %p= link_to pluralize(album.comments.size, "Comment"), album_path(album, :anchor => 'comments')
-            - if admin?  
+            - if logged_in?  
               %p
                 View Count:
                 = album.view_count
-              %p= link_to "[edit]", edit_resource_path(album) if admin?
+              %p= link_to "[edit]", edit_resource_path(album) if logged_in?
           .clear
 
-- if admin?
+- if logged_in?
   .actions
     %p= link_to "Create a new album", new_resource_path

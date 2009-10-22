@@ -1,6 +1,8 @@
 class PhotosController < InheritedResources::Base
-  before_filter :admin_required
-    
+  access_control do
+    allow logged_in
+  end
+  
   belongs_to :album
   
   respond_to :html, :xml, :json, :js

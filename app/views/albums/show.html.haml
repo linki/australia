@@ -53,7 +53,7 @@
 .actions
   %p= link_to "Back to list of albums", collection_path
 
-- if admin?
+- if logged_in?
   .actions
     %p= link_to "Add photos to album", new_album_photo_path(@album)
     %p= link_to "Edit photos of the album", album_photos_path(@album)  

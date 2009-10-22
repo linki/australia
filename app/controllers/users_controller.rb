@@ -1,5 +1,7 @@
 class UsersController < InheritedResources::Base
-  before_filter :admin_required
-    
+  access_control do
+    allow logged_in
+  end
+  
   respond_to :html, :xml, :json
 end

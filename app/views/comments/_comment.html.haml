@@ -2,7 +2,7 @@
   .text
     %p
       = simple_format h(comment.text)
-      - if admin?
+      - if logged_in?
         = link_to "[delete]", [comment.commentable, comment], :confirm => 'Are you sure?', :method => :delete
   .meta
     %p

@@ -1,5 +1,8 @@
 class CommentsController < InheritedResources::Base
-  before_filter :admin_required, :except => :create
+  access_control do
+    allow logged_in
+    allow anonymous, :to => :create
+  end
     
   belongs_to :album
 
