@@ -25,6 +25,8 @@ Rails::Initializer.run do |config|
   config.gem 'ryanb-acts-as-list', :lib => 'acts_as_list', :source => 'http://gems.github.com'
   config.gem "acl9", :lib => "acl9", :source => "http://gemcutter.org"
   
+  config.gem 'collectiveidea-delayed_job', :lib => 'delayed_job', :source => 'http://gems.github.com'
+  
   config.gem 'mime-types', :lib => "mime/types"
   
   %w(middleware sweepers).each do |dir|
