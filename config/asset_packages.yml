@@ -12,6 +12,7 @@ javascripts:
   - selectable
   - galleria
   - comments
+  - thickbox.min
   - jrails.min
   - application
 stylesheets: 
@@ -23,6 +24,7 @@ stylesheets:
   - formtastic
   - formtastic_changes
   - galleria
+  - thickbox
   - application
   - jquery-ui/humanity/jquery-ui
 

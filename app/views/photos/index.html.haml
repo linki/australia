@@ -7,9 +7,9 @@
 - form_tag sort_album_photos_path, :method => :put do
   %ul#photos.sortable
     - @photos.each do |photo|
-      %li{:id => "photo_#{photo.id}"}
+      %li[photo]
         = hidden_field_tag 'photos[]', photo.id
-        = link_to image_tag(photo.image.url(:thumb)), album_photo_path(@album, photo)
+        = link_to image_tag(photo.image.url(:thumb)), photo.image.url(:large), :class => 'thickbox', :title => link_to(photo.name, album_photo_path(@album, photo))
         = link_to_remote 'delete', :url => album_photo_path(@album, photo), :confirm => 'Are you sure?', :method => :delete, :class => 'delete'
 
 .clear
