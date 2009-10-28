@@ -1,3 +1,6 @@
+- content_for :head do
+  = auto_discovery_link_tag(:atom, albums_url(:format => :atom))
+
 %h1 Albums
 %h2 ...because pictures tell more
 
@@ -25,6 +28,10 @@
                 = album.view_count
               %p= link_to "[edit]", edit_resource_path(album) if logged_in?
           .clear
+
+%p.actions.small
+  = image_tag 'feed.png'
+  = link_to 'keep me in the loop', albums_path(:format => :atom)
 
 - if logged_in?
   .actions

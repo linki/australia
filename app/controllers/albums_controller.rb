@@ -5,6 +5,7 @@ class AlbumsController < InheritedResources::Base
   end
   
   respond_to :html, :xml, :json
+  respond_to :atom, :only => :index
 
   def index
     @albums = (logged_in? ? Album : Album.published).all(:order => 'starts_at DESC, ends_at DESC', :include => [:photos, :comments])
