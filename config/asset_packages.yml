@@ -12,6 +12,7 @@ javascripts:
   - selectable
   - galleria
   - comments
+  - jrails.min
   - application
 stylesheets: 
 - base: 

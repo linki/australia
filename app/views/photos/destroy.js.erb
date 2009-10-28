@@ -1,0 +1,6 @@
+$('#photo_<%= @photo.id %>').hide();
+$.gritter.add({
+  title: 'Notice',
+  text: '<%= flash[:notice] %>'
+});
+<% flash.discard %>
