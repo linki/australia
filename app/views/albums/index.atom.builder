@@ -1,6 +1,6 @@
 atom_feed(:root_url => albums_url, :url => albums_url(:format => :atom)) do |feed|
   feed.title('Australia')
-  feed.updated(@albums.any? ? @albums.first.updated_at : Time.now.utc)
+  feed.updated(@albums.any? ? (@albums.first.published_at || @albums.first.created_at).utc : Time.now.utc)
 
   @albums.each do |album|
     published_at = (album.published_at || album.created_at).utc
