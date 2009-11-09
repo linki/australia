@@ -3,8 +3,6 @@ log/*.log
 tmp/**/*
 tmp/restart.txt
 public/system
-public/javascripts/base_packaged.js
-public/stylesheets/base_packaged.css
 config/database.yml
 config/safe.conf
 config/deploy.rb
