@@ -10,7 +10,6 @@ config/safe.conf
 config/amazon_s3.yml
 config/deploy.rb
 config/initializers/hoptoad.rb
-config/initializers/set_password.rb
 config/initializers/session_store.rb
 Capfile
 db/*.sqlite3
