@@ -8,3 +8,5 @@ acl9 --source http://gemcutter.org
 collectiveidea-delayed_job --source http://gems.github.com
 
 mime-types
+
+rubyzip
