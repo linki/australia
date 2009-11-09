@@ -1,0 +1,10 @@
+aws-s3
+
+justinfrench-formtastic --source http://gems.github.com
+josevalim-inherited_resources --source http://gems.github.com
+ryanb-acts-as-list --source http://gems.github.com
+acl9 --source http://gemcutter.org
+
+collectiveidea-delayed_job --source http://gems.github.com
+
+mime-types
