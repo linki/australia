@@ -18,5 +18,5 @@ class Photo < ActiveRecord::Base
     image_file_name
   end
   
-  handle_asynchronously :destroy
+  # handle_asynchronously :destroy
 end
