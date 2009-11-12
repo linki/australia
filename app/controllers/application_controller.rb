@@ -30,6 +30,6 @@ class ApplicationController < ActionController::Base
   end
   
   def logged_in?
-    session[:password] == PASSWORD
+    session[:password] == ENV['PASSWORD']
   end
 end

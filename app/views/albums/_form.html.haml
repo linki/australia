@@ -5,13 +5,11 @@
     = f.input :starts_at
     = f.input :ends_at
     = f.input :published, :as => :boolean
-    = f.input :package
     #photos.text.optional
       %ul#selectable
         - @album.photos.each do |photo|
           %li{:class => (photo == @album.thumb) ? 'ui-selected' : ''}
             = image_tag photo.image.url(:thumb)
             = f.radio_button :thumb_id, photo.id, :style => 'display: none'
-    = f.input :bundle, :as => :boolean unless @album.new_record?
   - f.buttons do
     = f.submit "Save"

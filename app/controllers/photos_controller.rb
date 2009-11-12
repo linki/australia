@@ -65,6 +65,4 @@ class PhotosController < InheritedResources::Base
     end
     redirect_to album_photos_path(@album)
   end
-  
-  # cache_sweeper :photo_sweeper, :only => [:create, :update, :destroy, :update_multiple, :sort]  
 end

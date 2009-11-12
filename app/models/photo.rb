@@ -1,14 +1,21 @@
 class Photo < ActiveRecord::Base
   attr_accessible :name, :description, :image
   
-  has_attached_file :image,
-                    :styles => { :large => "800x600>", :medium => "300x300>", :thumb => "100x100>" },
-                    :storage => :s3,
-                    :s3_credentials => "#{RAILS_ROOT}/config/amazon_s3.yml",
-                    :s3_host_alias => YAML.load_file("#{RAILS_ROOT}/config/amazon_s3.yml")[RAILS_ENV]['host_alias'],
-                    :s3_headers => { 'Expires' => 10.years.from_now.httpdate },
-                    :url => ":s3_alias_url",
-                    :path => ":attachment/:id/:style/:filename"
+  case APP_CONFIG[:storage]
+    when 'amazon_s3'
+      has_attached_file :image,
+                        :styles => { :large => "800x600>", :medium => "300x300>", :thumb => "100x100>" },
+                        :storage => :s3,
+                        :s3_credentials => { :access_key_id => ENV['S3_KEY'], :secret_access_key => ENV['S3_SECRET'] },
+                        :bucket => APP_CONFIG[:bucket],                        
+                        :s3_host_alias => APP_CONFIG[:host_alias],
+                        :s3_headers => { 'Expires' => 10.years.from_now.httpdate },
+                        :url => ":s3_alias_url",
+                        :path => ":attachment/:id/:style/:filename"
+    else
+      has_attached_file :image,
+                        :styles => { :large => "800x600>", :medium => "300x300>", :thumb => "100x100>" }
+  end
 
   belongs_to :album
   
@@ -17,6 +24,4 @@ class Photo < ActiveRecord::Base
   def name
     image_file_name
   end
-  
-  # handle_asynchronously :destroy
 end

@@ -1,3 +1,12 @@
+make it heroku ready
+weiche fuer image hosting
+abandong inherited resources? or make it better
+remove packaging or make it work
+disable delayed job or make it configurable (awesome, but not with heroku)
+try gem bundler (yehuda rockt)
+
+gonna be fun
+
 clean up say it button
 - image upload in list (maybe instantly sortable)
 cleanup forms

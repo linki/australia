@@ -28,6 +28,9 @@ class AlbumsController < InheritedResources::Base
     new!
   end
   
-  # caches_page :index, :show
-  # cache_sweeper :album_sweeper, :only => [:create, :update, :destroy]
+  def bundle
+    @album = Album.find(params[:id])
+    @album.bundle
+    redirect_to @album
+  end
 end

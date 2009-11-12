@@ -1,0 +1,21 @@
+development:
+  domain: australia.local
+  storage: filesystem
+  hoptoad: false
+  bucket: ozzi-development
+  host_alias: d2ohw747sglmss.cloudfront.net  
+
+test:
+  domain: test.host
+  storage: filesystem  
+  hoptoad: false
+  bucket: ozzi-development
+  host_alias: d2ohw747sglmss.cloudfront.net  
+  
+production:
+  domain: backenhörnchen.de
+  storage: amazon_s3
+  hoptoad: true
+  bucket: ozzi-development
+  host_alias: d2ohw747sglmss.cloudfront.net
+  

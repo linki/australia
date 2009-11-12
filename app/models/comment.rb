@@ -1,5 +1,5 @@
 class Comment < ActiveRecord::Base
-  #attr_accessible :text, :user_name
+  attr_accessible :text, :user_name
   
   validates_presence_of :text
   

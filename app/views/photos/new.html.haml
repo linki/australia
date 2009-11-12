@@ -1,6 +1,3 @@
-- javascript 'swfobject', 'jquery.uploadify.min'
-- stylesheet 'uploadify'
-
 %h1= @album.name
 %h2= @album.description
 
@@ -19,24 +16,24 @@
   %p= link_to "Edit photos of the album", collection_path
 
 - content_for :foot do
-  %script{:type => "text/javascript"}
+  :javascript
     $(document).ready(function() {
-    $('#photo_image').uploadify({
-    'uploader' : '/flash/uploadify.swf',
-    = "'script' : '#{collection_path}',"
-    'fileDataName' : $('#photo_uploader input:file')[0].name, // Extract correct name of upload field from form field
-    'cancelImg' : '/images/cancel.png',
-    'buttonText' : 'Add Photos',
-    = "'fileDesc' : 'Photos ( #{[:jpg, :jpeg, :gif, :png].collect { |ext| "*.#{ext}" }.join(';')})',"
-    = "'fileExt' : '#{[:jpg, :jpeg, :gif, :png].collect { |ext| "*.#{ext}" }.join(';')}',"
-    = "'sizeLimit' : #{20.megabytes},"
-    'multi' : true,
-    'auto' : true,
-    'onComplete' : function(event, queueID, fileObj, response, data) { var data = eval('(' + response + ')');$.getScript(data.photo)},
-    'scriptData' : {
-    'format': 'json',
-    = "'#{ActionController::Base.session_options[:key]}' : encodeURIComponent('#{u cookies[ActionController::Base.session_options[:key]]}'),"
-    = "'authenticity_token' : encodeURIComponent('#{u form_authenticity_token if protect_against_forgery?}')"
-    }
-    });
+      $('#photo_image').uploadify({
+        'uploader' : '/flash/uploadify.swf',
+        'script' : '#{collection_path}',
+        'fileDataName' : $('#photo_uploader input:file')[0].name, // Extract correct name of upload field from form field
+        'cancelImg' : '/images/cancel.png',
+        'buttonText' : 'Add Photos',
+        'fileDesc' : 'Photos ( #{[:jpg, :jpeg, :gif, :png].collect { |ext| "*.#{ext}" }.join(';')})',
+        'fileExt' : '#{[:jpg, :jpeg, :gif, :png].collect { |ext| "*.#{ext}" }.join(';')}',
+        'sizeLimit' : #{20.megabytes},
+        'multi' : true,
+        'auto' : true,
+        'onComplete' : function(event, queueID, fileObj, response, data) { var data = eval('(' + response + ')');$.getScript(data.photo)},
+        'scriptData' : {
+          'format': 'json',
+          '#{ActionController::Base.session_options[:key]}' : encodeURIComponent('#{u cookies[ActionController::Base.session_options[:key]]}'),
+          'authenticity_token' : encodeURIComponent('#{u form_authenticity_token if protect_against_forgery?}')
+        }
+      });
     });

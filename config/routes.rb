@@ -4,7 +4,7 @@ ActionController::Routing::Routes.draw do |map|
 
   map.resource :session
     
-  map.resources :albums do |albums|
+  map.resources :albums, :member => { :bundle => :post } do |albums|
     albums.resources :photos, :collection => { :sort => :put, :descriptions => :get, :update_multiple => :put }
     albums.resources :comments
   end

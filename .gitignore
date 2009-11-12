@@ -6,6 +6,5 @@ public/system
 config/database.yml
 config/safe.conf
 config/deploy.rb
-config/initializers/hoptoad.rb
 Capfile
 db/*.sqlite3
