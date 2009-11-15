@@ -16,6 +16,6 @@ production:
   domain: backenhörnchen.de
   storage: amazon_s3
   hoptoad: true
-  bucket: ozzi-development
+  bucket: ozzi
   host_alias: d2ohw747sglmss.cloudfront.net
   
