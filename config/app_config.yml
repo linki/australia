@@ -9,13 +9,11 @@ test:
   domain: test.host
   storage: filesystem  
   hoptoad: false
-  bucket: ozzi-development
-  host_alias: d2ohw747sglmss.cloudfront.net  
   
 production:
   domain: backenhörnchen.de
   storage: amazon_s3
   hoptoad: true
   bucket: ozzi
-  host_alias: d2ohw747sglmss.cloudfront.net
+  host_alias: d1e3a6eiipbq8f.cloudfront.net
   
