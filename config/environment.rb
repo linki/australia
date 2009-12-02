@@ -7,7 +7,7 @@ RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
-  config.gem "publishable", :source => "http://gemcutter.org"
+  config.gem "publishable", :source => "http://gemcutter.org", :version => '>=0.1.1'
   config.gem "aws-s3", :lib => "aws/s3"
   
   config.gem "justinfrench-formtastic", :lib => 'formtastic', :source => 'http://gems.github.com'
