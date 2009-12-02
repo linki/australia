@@ -7,6 +7,7 @@ RAILS_GEM_VERSION = '2.3.4' unless defined? RAILS_GEM_VERSION
 require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
+  config.gem "publishable", :source => "http://gemcutter.org"
   config.gem "aws-s3", :lib => "aws/s3"
   
   config.gem "justinfrench-formtastic", :lib => 'formtastic', :source => 'http://gems.github.com'
@@ -17,6 +18,9 @@ Rails::Initializer.run do |config|
   config.gem 'collectiveidea-delayed_job', :lib => 'delayed_job', :source => 'http://gems.github.com'
   
   config.gem 'mime-types', :lib => "mime/types"
+  
+  config.gem "haml", :source => "http://gemcutter.org"
+  config.gem "rubyzip", :lib => 'zip/zip', :source => "http://gemcutter.org"  
   
   config.load_paths << File.expand_path(File.join(Rails.root, 'app', 'middleware'))
     
