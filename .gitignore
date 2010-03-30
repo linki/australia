@@ -8,3 +8,4 @@ config/safe.conf
 config/deploy.rb
 Capfile
 db/*.sqlite3
+mysqldump-australia*
