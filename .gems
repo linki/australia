@@ -1,12 +1,12 @@
-publishable --source http://gemcutter.org
+publishable
 aws-s3
 
-justinfrench-formtastic --source http://gems.github.com
-josevalim-inherited_resources --source http://gems.github.com
+formtastic
+inherited_resources --version '<= 1.0.6'
 ryanb-acts-as-list --source http://gems.github.com
-acl9 --source http://gemcutter.org
+acl9
 
-collectiveidea-delayed_job --source http://gems.github.com
+delayed_job
 
 mime-types
 
