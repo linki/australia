@@ -8,5 +8,6 @@ config/database.yml
 config/safe.conf
 config/deploy.rb
 Capfile
+TODO.txt
 db/*.sqlite3
 mysqldump-australia*

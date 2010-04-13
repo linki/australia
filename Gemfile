@@ -15,7 +15,7 @@ gem 'mysql',   '>= 2.8.1.1'
 gem 'pg'
 gem 'publishable'
 gem 'rubyzip',            :require => 'zip/zip'
-gem 'ryanb-acts-as-list', :require => 'acts_as_list'
+gem 'acts-as-list',       :require => 'acts_as_list'
 gem 'sqlite3-ruby',       :require => 'sqlite3'
 
 group :development do
