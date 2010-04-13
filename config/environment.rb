@@ -22,8 +22,6 @@ Rails::Initializer.run do |config|
   config.gem "haml"
   config.gem "rubyzip", :lib => 'zip/zip'
 
-  config.gem 'bullet'
-
   config.load_paths << File.expand_path(File.join(Rails.root, 'app', 'middleware'))
 
   config.time_zone = 'Brisbane'
