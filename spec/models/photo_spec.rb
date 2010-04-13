@@ -4,8 +4,4 @@ describe Photo do
   it "should be valid" do
     Factory.build(:photo).should be_valid
   end
-
-  it "should assign album name" do
-    Factory.build(:photo, :album_name => 'album name').album.name.should == 'album name'
-  end    
 end

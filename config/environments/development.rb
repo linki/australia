@@ -18,8 +18,6 @@ config.action_mailer.raise_delivery_errors = false
 
 Paperclip.options[:command_path] = '/usr/local/bin'
 
-config.gem "rails-footnotes"
-
 config.after_initialize do
   Bullet.enable = true 
   Bullet.alert = true
