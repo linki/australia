@@ -1,0 +1,14 @@
+publishable
+aws-s3
+
+formtastic
+inherited_resources --version '<= 1.0.6'
+ryanb-acts-as-list --source http://gems.github.com
+acl9
+
+delayed_job
+
+mime-types
+
+haml
+rubyzip
