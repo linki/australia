@@ -8,6 +8,5 @@ require File.join(File.dirname(__FILE__), 'boot')
 
 Rails::Initializer.run do |config|
   config.load_paths << File.expand_path(File.join(Rails.root, 'app', 'middleware'))
-  config.action_controller.session = { :key => ENV['SESSION_KEY'], :secret => ENV['SESSION_SECRET'] }
   config.time_zone = 'Brisbane'
 end
