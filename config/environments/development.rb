@@ -18,4 +18,19 @@ config.action_mailer.raise_delivery_errors = false
 
 Paperclip.options[:command_path] = '/usr/local/bin'
 
-config.gem "josevalim-rails-footnotes", :lib => "rails-footnotes", :source => "http://gems.github.com"
+config.gem "rails-footnotes"
+
+config.after_initialize do
+  Bullet.enable = true 
+  Bullet.alert = true
+  Bullet.bullet_logger = true  
+  Bullet.console = true
+  Bullet.rails_logger = true
+  Bullet.disable_browser_cache = true
+end
+
+begin
+  require 'ruby-growl'
+  Bullet.growl = true
+rescue MissingSourceFile
+end

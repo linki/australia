@@ -3,7 +3,7 @@ class Comment < ActiveRecord::Base
   
   validates_presence_of :text
   
-  belongs_to :commentable, :polymorphic => true
+  belongs_to :commentable, :polymorphic => true, :counter_cache => true
   belongs_to :user  
   
   getter_and_setter_for :user => :name

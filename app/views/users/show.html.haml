@@ -6,9 +6,6 @@
 %p
   %strong Email:
   =h @user.email
-%p
-  %strong Location:
-  = link_to h(@user.location.name), @user.location if @user.location
 
 %p
   = link_to "Edit", edit_user_path(@user)

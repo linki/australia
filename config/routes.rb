@@ -12,7 +12,6 @@ ActionController::Routing::Routes.draw do |map|
   map.resources :comments
   
   map.resources :users
-  map.resources :locations
   
   map.root :albums
 

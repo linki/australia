@@ -8,7 +8,7 @@ class AlbumsController < InheritedResources::Base
   respond_to :atom, :only => :index
 
   def index
-    @albums = (logged_in? ? Album : Album.published).all(:order => 'starts_at DESC, ends_at DESC', :include => [:photos, :comments])
+    @albums = (logged_in? ? Album : Album.published).all(:order => 'starts_at DESC, ends_at DESC', :include => :thumb)
     index!
   end
   
@@ -16,7 +16,7 @@ class AlbumsController < InheritedResources::Base
     @album = Album.find(params[:id])
     raise ActiveRecord::RecordNotFound unless @album.published? || logged_in?
     @photos = @album.photos.all(:order => 'position')
-    @comments = @album.comments.all(:order => 'created_at', :include => :user)
+    @comments = @album.comments.all(:order => 'created_at', :include => (logged_in? ? [:user, :commentable] : :user))
     @comment = Comment.new(:user_name => cookies[:user_name])
     @album.increase_view_count!
     show!

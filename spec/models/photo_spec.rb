@@ -8,8 +8,4 @@ describe Photo do
   it "should assign album name" do
     Factory.build(:photo, :album_name => 'album name').album.name.should == 'album name'
   end    
-  
-  it "should assign location name" do
-    Factory.build(:user, :location_name => 'location name').location.name.should == 'location name'
-  end    
 end
