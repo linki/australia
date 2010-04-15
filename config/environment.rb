@@ -21,6 +21,9 @@ Rails::Initializer.run do |config|
 
   config.gem "haml"
   config.gem "rubyzip", :lib => 'zip/zip'
+  
+  config.gem 'hoptoad_notifier'
+  config.gem 'paperclip'  
 
   config.load_paths << File.expand_path(File.join(Rails.root, 'app', 'middleware'))
 
