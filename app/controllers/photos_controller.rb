@@ -16,7 +16,7 @@ class PhotosController < InheritedResources::Base
   def create
     @album = Album.find(params[:album_id])
     @photo = @album.photos.build(params[:photo])
-    @photo.image_content_type = MIME::Types.type_for(@photo.image_file_name).to_s
+    @photo.image_content_type = "image/jpeg" # MIME::Types.type_for(@photo.image_file_name).to_s
     create! do |success, failure|
       success.html { redirect_to resource_path }
       success.xml  { render :xml => @photo, :status => :created, :location => @photo }
