@@ -21,17 +21,19 @@ Paperclip.options[:command_path] = '/usr/local/bin'
 config.gem "rails-footnotes"
 config.gem 'bullet', :version => '>= 1.7.6'
 
-config.after_initialize do
-  Bullet.enable = true 
-  Bullet.alert = true
-  Bullet.bullet_logger = true  
-  Bullet.console = true
-  Bullet.rails_logger = true
-  Bullet.disable_browser_cache = true
-end
+if defined?(Rails::Initializer::Bullet)
+  config.after_initialize do
+    Bullet.enable = true 
+    Bullet.alert = true
+    Bullet.bullet_logger = true  
+    Bullet.console = true
+    Bullet.rails_logger = true
+    Bullet.disable_browser_cache = true
+  end
 
-begin
-  require 'ruby-growl'
-  Bullet.growl = true
-rescue MissingSourceFile
+  begin
+    require 'ruby-growl'
+    Bullet.growl = true
+  rescue MissingSourceFile
+  end
 end
