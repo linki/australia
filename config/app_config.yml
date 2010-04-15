@@ -1,5 +1,5 @@
 development:
-  domain: australia.local
+  domain: localhost:3000
   storage: filesystem
   hoptoad: false
   bucket: ozzi-development
@@ -16,4 +16,3 @@ production:
   hoptoad: true
   bucket: ozzi
   host_alias: media.backenhörnchen.de
-  
