@@ -4,7 +4,7 @@ class Photo < ActiveRecord::Base
   case APP_CONFIG[:storage]
     when 'amazon_s3'
       has_attached_file :image,
-                        :styles => { :large => "800x600>", :medium => "300x300>", :thumb => "100x100>" },
+                        :styles => { :large => "900x600>", :medium => "300x300>", :thumb => "100x100>" },
                         :storage => :s3,
                         :s3_credentials => { :access_key_id => ENV['S3_KEY'], :secret_access_key => ENV['S3_SECRET'] },
                         :bucket => APP_CONFIG[:bucket],                        
@@ -14,7 +14,7 @@ class Photo < ActiveRecord::Base
                         :path => ":attachment/:id/:style/:filename"
     else
       has_attached_file :image,
-                        :styles => { :large => "800x600>", :medium => "300x300>", :thumb => "100x100>" }
+                        :styles => { :large => "900x600>", :medium => "300x300>", :thumb => "100x100>" }
   end
 
   belongs_to :album
