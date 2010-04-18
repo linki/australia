@@ -30,7 +30,8 @@ class AlbumsController < InheritedResources::Base
   
   def bundle
     @album = Album.find(params[:id])
-    @album.bundle
+    call_rake 'bundle:album', :id => @album.id
+    flash[:notice] = "Bundling Album #{@album.id} in Background..."
     redirect_to @album
   end
 end
