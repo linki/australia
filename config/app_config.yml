@@ -1,18 +1,18 @@
 development:
   domain: localhost:3000
   storage: filesystem
-  hoptoad: false
-  bucket: ozzi-development
-  host_alias: d2ohw747sglmss.cloudfront.net  
+  hoptoad: true
+  bucket: ozzi
+  host_alias: media.xn--backenhrnchen-omb.de
 
 test:
   domain: test.host
-  storage: filesystem  
+  storage: filesystem
   hoptoad: false
   
 production:
-  domain: backenhörnchen.de
+  domain: xn--backenhrnchen-omb.de
   storage: amazon_s3
   hoptoad: true
   bucket: ozzi
-  host_alias: media.backenhörnchen.de
+  host_alias: media.xn--backenhrnchen-omb.de
