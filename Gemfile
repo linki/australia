@@ -14,6 +14,7 @@ gem 'mime-types',         :require => 'mime/types'
 gem 'mongrel', '>= 1.1.6'
 gem 'mysql',   '>= 2.8.1.1'
 gem 'pg'
+gem 'paperclip'
 gem 'publishable'
 gem 'rubyzip',            :require => 'zip/zip'
 gem 'acts-as-list',       :require => 'acts_as_list'
@@ -21,8 +22,8 @@ gem 'sqlite3-ruby',       :require => 'sqlite3'
 gem 'test-unit', '1.2.3'
 
 group :development do
-  gem 'bullet',          '1.7.3'
-  gem 'rails-footnotes', '3.6.6'  
+  gem 'bullet',          '>= 1.7.6'
+  gem 'rails-footnotes'
 end
 
 group :test, :cucumber do
