@@ -9,6 +9,7 @@ inherited_resources --version '<= 1.0.6'
 ryanb-acts-as-list --source http://gems.github.com
 acl9
 
+test-unit --version '1.2.3'
 delayed_job
 
 mime-types

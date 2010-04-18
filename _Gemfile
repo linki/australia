@@ -18,6 +18,7 @@ gem 'publishable'
 gem 'rubyzip',            :require => 'zip/zip'
 gem 'acts-as-list',       :require => 'acts_as_list'
 gem 'sqlite3-ruby',       :require => 'sqlite3'
+gem 'test-unit', '1.2.3'
 
 group :development do
   gem 'bullet',          '1.7.3'
