@@ -1,9 +1,6 @@
 development:
   domain: localhost:3000
   storage: filesystem
-  hoptoad: true
-  bucket: ozzi
-  host_alias: media.xn--backenhrnchen-omb.de
 
 test:
   domain: test.host
