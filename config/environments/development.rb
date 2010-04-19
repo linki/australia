@@ -20,9 +20,6 @@ if defined?(Paperclip)
   Paperclip.options[:command_path] = '/usr/local/bin'
 end
 
-config.gem "rails-footnotes"
-config.gem 'bullet', :version => '>= 1.7.6'
-
 if defined?(Rails::Initializer::Bullet)
   config.after_initialize do
     Bullet.enable = true 

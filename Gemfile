@@ -24,8 +24,8 @@ group :plugins do
 end
 
 group :development do
-  gem 'bullet',          '1.7.3'
-  gem 'rails-footnotes', '3.6.6'  
+  gem 'bullet',          '>= 1.7.6'
+  gem 'rails-footnotes'
 end
 
 group :test, :cucumber do
