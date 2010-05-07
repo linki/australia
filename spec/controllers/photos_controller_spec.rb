@@ -1,10 +1,10 @@
 require File.dirname(__FILE__) + '/../spec_helper'
  
 describe PhotosController do
-  fixtures :all
   integrate_views
   
   before do
+    controller.expects(:current_user).returns(true)
     @album = Factory(:album)
   end
   
@@ -24,13 +24,13 @@ describe PhotosController do
   end
   
   it "create action should render new template when model is invalid" do
-    Photo.any_instance.stubs(:valid?).returns(false)
+    ActiveRecord::Errors.any_instance.stubs(:empty?).returns(false)
     post :create, :album_id => @album
     response.should render_template(:new)
   end
   
   it "create action should redirect when model is valid" do
-    Photo.any_instance.stubs(:valid?).returns(true)
+    ActiveRecord::Errors.any_instance.stubs(:empty?).returns(true)
     post :create, :album_id => @album
     response.should redirect_to(album_photo_url(@album, assigns[:photo]))
   end
@@ -42,13 +42,13 @@ describe PhotosController do
   
   it "update action should render edit template when model is invalid" do
     photo = Factory(:photo, :album => @album)
-    Photo.any_instance.stubs(:valid?).returns(false)
+    ActiveRecord::Errors.any_instance.stubs(:empty?).returns(false)
     put :update, :id => photo, :album_id => @album
     response.should render_template(:edit)
   end
   
   it "update action should redirect when model is valid" do
-    Photo.any_instance.stubs(:valid?).returns(true)
+    ActiveRecord::Errors.any_instance.stubs(:empty?).returns(true)
     put :update, :id => Factory(:photo, :album => @album), :album_id => @album
     response.should redirect_to(album_photo_url(@album, assigns[:photo]))
   end

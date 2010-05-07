@@ -1,8 +1,9 @@
 require File.dirname(__FILE__) + '/../spec_helper'
  
 describe UsersController do
-  fixtures :all
   integrate_views
+  
+  before { controller.expects(:current_user).returns(true) }
   
   it "index action should render index template" do
     get :index
@@ -20,13 +21,13 @@ describe UsersController do
   end
   
   it "create action should render new template when model is invalid" do
-    User.any_instance.stubs(:valid?).returns(false)
+    ActiveRecord::Errors.any_instance.stubs(:empty?).returns(false)
     post :create
     response.should render_template(:new)
   end
   
   it "create action should redirect when model is valid" do
-    User.any_instance.stubs(:valid?).returns(true)
+    ActiveRecord::Errors.any_instance.stubs(:empty?).returns(true)
     post :create
     response.should redirect_to(user_url(assigns[:user]))
   end
@@ -38,13 +39,13 @@ describe UsersController do
   
   it "update action should render edit template when model is invalid" do
     user = Factory(:user)
-    User.any_instance.stubs(:valid?).returns(false)
+    ActiveRecord::Errors.any_instance.stubs(:empty?).returns(false)
     put :update, :id => user
     response.should render_template(:edit)
   end
   
   it "update action should redirect when model is valid" do
-    User.any_instance.stubs(:valid?).returns(true)
+    ActiveRecord::Errors.any_instance.stubs(:empty?).returns(true)
     put :update, :id => Factory(:user)
     response.should redirect_to(user_url(assigns[:user]))
   end

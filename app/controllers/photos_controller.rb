@@ -16,7 +16,7 @@ class PhotosController < InheritedResources::Base
   def create
     @album = Album.find(params[:album_id])
     @photo = @album.photos.build(params[:photo])
-    @photo.image_content_type = MIME::Types.type_for(@photo.image_file_name).first.try(:content_type) || 'image/jpeg'
+    @photo.image_content_type = MIME::Types.type_for(@photo.image_file_name).first.try(:content_type) || 'image/jpeg' if @photo.image_content_type
     create! do |success, failure|
       success.html { redirect_to resource_path }
       success.xml  { render :xml => @photo, :status => :created, :location => @photo }
@@ -32,7 +32,7 @@ class PhotosController < InheritedResources::Base
   def update
     @album = Album.find(params[:album_id])
     @photo = @album.photos.find(params[:id])
-    @photo.image_content_type = MIME::Types.type_for(@photo.image_file_name).to_s
+    @photo.image_content_type = MIME::Types.type_for(@photo.image_file_name).first.try(:content_type) || 'image/jpeg' if @photo.image_content_type
     update! do |success, failure|
       success.html { redirect_to resource_path }
       success.xml  { head :ok }
