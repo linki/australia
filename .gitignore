@@ -9,5 +9,6 @@ config/safe.conf
 config/deploy.rb
 Capfile
 TODO.txt
+*.rbc
 db/*.sqlite3
 mysqldump-australia*
