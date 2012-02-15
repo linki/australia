@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '2.3.5'
-gem 'mysql-ruby', '>= 2.8.1', :require => 'mysql', :git => 'git://github.com/kwatch/mysql-ruby.git'
+gem 'mysql2', '< 0.3'
 gem 'pg'
 gem 'sqlite3-ruby', :require => 'sqlite3'
   
@@ -15,7 +15,7 @@ group :plugins do
   gem 'hoptoad_notifier'
   gem 'inherited_resources', '<= 1.0.6'
   gem 'mime-types',          :require => 'mime/types'
-  gem 'mongrel', '>= 1.1.6', :git => 'git://github.com/radar/mongrel.git'
+  gem 'thin'
   gem 'paperclip'
   gem 'publishable'
   gem 'rubyzip',             :require => 'zip/zip'
