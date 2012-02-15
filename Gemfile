@@ -17,9 +17,7 @@ group :plugins do
   gem 'mime-types',          :require => 'mime/types'
   gem 'thin'
   gem 'paperclip'
-  # gem 'publishable'
   gem 'rubyzip',             :require => 'zip/zip'
-  # gem 'test-unit',           '1.2.3'
 end
 
 group :development do
@@ -28,12 +26,12 @@ group :development do
 end
 
 group :test, :cucumber do
-  gem 'cucumber',     '0.4.4'
-  gem 'factory_girl', '1.2.3'
-  gem 'mocha',        '0.9.8'
-  gem 'pickle',       '0.2.1'
-  gem 'rspec',        '1.3.0'
-  gem 'rspec-rails',  '1.3.2'
-  gem 'test-unit',    '1.2.3'  
-  gem 'webrat',       '0.6.0'
+  gem 'cucumber'
+  gem 'factory_girl'
+  gem 'mocha'
+  gem 'pickle'
+  gem 'rspec'
+  gem 'rspec-rails'
+  gem 'test-unit'
+  gem 'webrat'
 end

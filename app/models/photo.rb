@@ -1,3 +1,5 @@
+require 'acts_as_list'
+
 class Photo < ActiveRecord::Base
   attr_accessible :name, :description, :image
   
