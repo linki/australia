@@ -12,6 +12,7 @@ group :plugins do
   gem 'delayed_job'
   gem 'formtastic'
   gem 'haml'
+  gem 'sass'
   gem 'hoptoad_notifier'
   gem 'inherited_resources', '<= 1.0.6'
   gem 'mime-types',          :require => 'mime/types'
@@ -23,6 +24,7 @@ end
 group :development do
   gem 'bullet',          '>= 1.7.6'
   gem 'rails-footnotes'
+  gem 'heroku'
 end
 
 group :test, :cucumber do
