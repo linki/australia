@@ -17,9 +17,9 @@ group :plugins do
   gem 'mime-types',          :require => 'mime/types'
   gem 'thin'
   gem 'paperclip'
-  gem 'publishable'
+  # gem 'publishable'
   gem 'rubyzip',             :require => 'zip/zip'
-  gem 'test-unit',           '1.2.3'
+  # gem 'test-unit',           '1.2.3'
 end
 
 group :development do
