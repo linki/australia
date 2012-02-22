@@ -1,15 +1,31 @@
+def require_gem_or_unpacked_gem(name, version = nil)
+  unpacked_gems_path = Pathname(__FILE__).dirname.parent + 'gems'
+  
+  begin
+    gem name, version if version
+    require name
+  rescue Gem::LoadError, MissingSourceFile
+    $: << Pathname.glob(unpacked_gems_path + "#{name.gsub('/', '-')}*").last + 'lib'
+    require name
+  end
+end
+
 require 'find'
 require 'net/http'
 require 'yaml'
+
+require_gem_or_unpacked_gem 'net/ssh'
+require_gem_or_unpacked_gem 'net/scp'
 
 class Backupmyapp
   include Timestamps
   include Filesystem
   
   def initialize(init = true)
-    if ENV.key?('BACKUP_MY_APP_KEY')
-      @key = ENV['BACKUP_MY_APP_KEY']
-      @server = Network.new(@key)
+    path = File.join(RAILS_ROOT, "config", "backupmyapp.conf")
+    if File.exists?(path)
+      @key = File.read(path)
+      @server = Backupmyapp::Network.new(@key)
     else
       Error.no_key
     end
@@ -24,23 +40,20 @@ class Backupmyapp
     load_config("backup")
     begin
       Database.backup
-    rescue => exception
-      @server.error("backup", exception.backtrace.join("\n"))
-    end
     
-    begin
       files = @server.diff(app_file_structure)
       files = trim_timestamps(app_file_structure) if files == "ALL"
+
       upload_files(files) if files && files.any?
-    rescue => exception
-      @server.error("backup", exception.backtrace.join("\n"))
+    rescue
+      @server.error("backup", $!)
     end
     @server.finish("backup")
   end
   
-  def restore
+  def restore #todo: rescue block
+    load_config("restore")
     begin
-      load_config("restore")
       download_files @server.restore
       Database.load
     rescue
@@ -50,11 +63,11 @@ class Backupmyapp
   end
   
   def download_files(files)
-    @server.download_collection collect_backup_files(files)
+    Transfer.new(@config, @server).download_collection collect_backup_files(files)
   end
   
   def upload_files(files)
-    @server.upload_collection collect_backup_files(files)
+    Transfer.new(@config, @server).upload_collection collect_backup_files(files)
   end
   
   def test

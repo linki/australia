@@ -4,10 +4,6 @@ class Backupmyapp
       @path = path
       @remote_path = remote
     end
-    
-    def relative_path
-      @path
-    end
   
     def path
       File.join(RAILS_ROOT, @path)
@@ -23,12 +19,6 @@ class Backupmyapp
   
     def local_folder
       path.gsub(File.basename(@path), '')
-    end
-    
-    def restore(content)
-      FileUtils.mkdir_p(local_folder)
-      File.open(path, 'w') {|f| f.write(content) }
-      content = ""
     end
   end
 end

@@ -1,49 +1,34 @@
 class Backupmyapp
   module Init
     def self.included(base)
-      base.class_eval do
-        skip_before_filter filter_chain, :only => [:backupmyapp]
-        before_filter :watch_backup_actions
-        
-        def watch_backup_actions
-          begin
-            process_backups_if_required
-          rescue
-            render :text => "Error occured: $!"
-          end
-        end
-        
-        def process_backups_if_required
+      base.class_eval  %Q{
+        before_filter :watch_backup
+        before_filter :watch_restore
+    
+        def watch_backup
           if params[:start_backup]
-            process_backup_in_fork
-          elsif params[:start_restore]
-            process_restore_in_fork
-          elsif params[:check_installed]
-            render :text => "installed"
+            begin
+              system("cd #{RAILS_ROOT} && rake backupmyapp:backup RAILS_ENV=#{RAILS_ENV} &")
+              logger.info "Started backupmyapp:backup"
+              render(:text => "OK")
+            rescue
+              render(:text => "FAIL")
+            end
           end
         end
-        
-        def process_backup_in_fork
-          f = Process.fork do
-            @backuper = Backupmyapp.new
-            @backuper.backup
-            exit!(0)
+    
+        def watch_restore
+          if params[:start_restore]
+            begin
+              system("cd #{RAILS_ROOT} && rake backupmyapp:restore RAILS_ENV=#{RAILS_ENV} &")
+              logger.info "Started backupmyapp:restore"
+              render(:text => "OK")
+            rescue
+              render(:text => "FAIL")
+            end
           end
-          
-          Process.detach(f)
         end
-        
-        def process_restore_in_fork
-          f = Process.fork do
-            @backuper = Backupmyapp.new
-            @backuper.restore
-            exit!(0)
-          end
-          
-          Process.detach(f)
-        end
-        
-      end
+      }, __FILE__, __LINE__
     end
   end
 end

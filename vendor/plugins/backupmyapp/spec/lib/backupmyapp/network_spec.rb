@@ -1,23 +1,26 @@
 require File.dirname(__FILE__) + '/../../spec_helper'
-require 'httpclient'
+require 'net/http'
 
 Network = Backupmyapp::Network
-HOST = Network::HOST
 describe Network do
   
   describe "Requests" do
     before(:each) do
-      stub_net
+      @network = Network.new("key")
+      @net = Net::HTTP.new(Network::BMA_HOST, 80)
+      @http_stub = HttpStub.new
+      Net::HTTP.should_receive(:new).and_return(@net)
     end
     
     it "should send correct request" do;
-      @net.should_receive(:post).with("#{HOST}/backups/connect/key", {:plugin_version=> Network::PLUGIN_VERSION}).and_return(@http_stub)
+      @net.should_receive(:post).with("/backups/connect/key", "").and_return(@http_stub)
       @network.post("connect").should == "response"
     end
     
     it "should send correct reuest with options" do
       options = {"q" => "ruby"}
-      @net.should_receive(:post).with("#{HOST}/backups/connect/key", options).and_return(@http_stub)
+      params = CGI.escape options.collect {|k, v| "#{k}=#{v}"}.join("&")
+      @net.should_receive(:post).with("/backups/connect/key", params).and_return(@http_stub)
       @network.post("connect", options)
     end
   end
@@ -52,15 +55,15 @@ describe Network do
       @network.finish("backup")
     end
     
-    it "should send error with correct text and key" do
-      @network.should_receive(:post).with("error", {:hash => "key", :body => "On restore: test error"})
+    it "should send error" do
+      @network.should_receive(:post).with("error", {:body => "On restore: test error"})
       @network.error("restore", "test error")
     end
     
     describe "Errors" do
       before(:each) do
         @files = []
-  
+
         5.times do
           @files << Backupmyapp::BackupFile.new("test1", "test2")
         end
@@ -78,78 +81,9 @@ describe Network do
     end
   end
   
-  describe "Upload/download methods" do
-    before(:each) do
-      stub_net
-      @files = []
-      
-
-      5.times do
-        @files << Backupmyapp::BackupFile.new("test1", "test2")
-      end
-
-      File.stub!(:new).and_return(FileStub.new)
-    end
-    
-    class FileStub
-      def mtime
-        Time.now
-      end
-    end
-
-    describe "upload" do
-      # it "should correctly upload file" do
-      #   file = @files.first
-      #   f = File.new(file.path)
-      #   params = { 'file' => f, 'mtime' => f.mtime.utc, 'location' => file.relative_path, 'key' => "key" }
-      #   
-      #   @net.should_receive(:post).with("#{HOST}/files/upload", params)
-      #   @network.upload(file)
-      # end
-      
-      it "should correctly upload collection" do
-        @network.stub!(:retry_failed_uploads)
-      
-        @files.each do |file|
-          @network.should_receive(:upload).with(file)
-        end
-      
-        @network.upload_collection(@files)
-      end
-    end
-
-    describe "upload" do
-      # it "should correctly upload file" do
-      #   file = @files.first
-      #   f = File.new(file.path)
-      #   params = { 'file' => f, 'mtime' => f.mtime.utc, 'location' => file.relative_path, 'key' => "key" }
-      #   
-      #   @net.should_receive(:post).with("#{HOST}/files/restore", params)
-      #   @network.upload(file)
-      # end
-      
-      it "should correctly upload collection" do
-        @network.stub!(:retry_failed_uploads)
-      
-        @files.each do |file|
-          @network.should_receive(:download).with(file)
-        end
-      
-        @network.download_collection(@files)
-      end
-    end
-  end
-  
   class HttpStub
-    def content
+    def body
       "response"
     end
-  end
-  
-  def stub_net
-    @net = HTTPClient.new      
-    HTTPClient.stub!(:new).and_return(@net)
-    @network = Network.new("key")
-    @http_stub = HttpStub.new
   end
 end

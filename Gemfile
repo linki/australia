@@ -1,10 +1,10 @@
 source 'http://rubygems.org'
 
-gem 'rails', '2.3.5'
+gem 'rails', '2.3.14'
 gem 'mysql2', '< 0.3'
 gem 'pg'
 gem 'sqlite3-ruby', :require => 'sqlite3'
-  
+
 gem 'acl9'
 gem 'acts-as-list',        :require => 'acts_as_list'
 gem 'aws-s3',              :require => 'aws/s3'
@@ -18,6 +18,8 @@ gem 'mime-types',          :require => 'mime/types'
 gem 'thin'
 gem 'paperclip'
 gem 'rubyzip',             :require => 'zip/zip'
+gem 'net-ssh'
+gem 'net-scp'
 
 group :development do
   gem 'bullet',          '>= 1.7.6'
@@ -32,6 +34,6 @@ group :test, :cucumber do
   gem 'pickle'
   gem 'rspec'
   gem 'rspec-rails'
-  gem 'test-unit'
   gem 'webrat'
+  gem 'test-unit'
 end
