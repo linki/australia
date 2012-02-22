@@ -8,8 +8,8 @@ test:
   hoptoad: false
   
 production:
-  domain: xn--backenhrnchen-omb.de
+  domain: australia.heroku.com
   storage: amazon_s3
   hoptoad: true
   bucket: ozzi
-  host_alias: media.xn--backenhrnchen-omb.de
+  # host_alias: media.xn--backenhrnchen-omb.de

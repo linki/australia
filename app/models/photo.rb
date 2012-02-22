@@ -10,9 +10,9 @@ class Photo < ActiveRecord::Base
                         :storage => :s3,
                         :s3_credentials => { :access_key_id => ENV['S3_KEY'], :secret_access_key => ENV['S3_SECRET'] },
                         :bucket => APP_CONFIG[:bucket],                        
-                        :s3_host_alias => APP_CONFIG[:host_alias],
+                        #:s3_host_alias => APP_CONFIG[:host_alias],
                         :s3_headers => { 'Expires' => 10.years.from_now.httpdate },
-                        :url => ":s3_alias_url",
+                        #:url => ":s3_alias_url",
                         :path => ":attachment/:id/:style/:filename"
     else
       has_attached_file :image,
