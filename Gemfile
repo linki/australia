@@ -21,7 +21,7 @@ gem 'paperclip'
 gem 'rubyzip',             :require => 'zip/zip'
 gem 'net-ssh'
 gem 'net-scp'
-
+gem 'daemons', '~> 1.1.0'
 
 group :development do
   gem 'bullet',          '>= 1.7.6'
