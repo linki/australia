@@ -22,6 +22,7 @@ gem 'rubyzip',             :require => 'zip/zip'
 gem 'net-ssh'
 gem 'net-scp'
 
+
 group :development do
   gem 'bullet',          '>= 1.7.6'
   gem 'rails-footnotes'
