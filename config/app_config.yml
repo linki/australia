@@ -11,5 +11,5 @@ production:
   domain: australia.heroku.com
   storage: amazon_s3
   hoptoad: true
-  bucket: ozzi
+  bucket: ozzi2
   # host_alias: media.xn--backenhrnchen-omb.de

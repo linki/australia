@@ -13,6 +13,7 @@ class Photo < ActiveRecord::Base
                         #:s3_host_alias => APP_CONFIG[:host_alias],
                         :s3_headers => { 'Expires' => 10.years.from_now.httpdate },
                         #:url => ":s3_alias_url",
+                        :url  => ":s3_eu_url",
                         :path => ":attachment/:id/:style/:filename"
     else
       has_attached_file :image,
